@@ -1,0 +1,54 @@
+<!-- Verificamos si existe la cookie -->
+<?php if (isset($_COOKIE['VotaDatAdmin'])) : ?>
+    <!doctype html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Configuración general</title>
+        <link href="../estilo.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <form name="configuraciones" action="configuraciones.php" method="post">
+            <h2>CONFIGURACIÓN GENERAL</h2>
+            <div class="cen">
+                | <strong><a href="categorias.php" title="Configurar categorías">Configurar categorías</a> |
+                    <a href="grados.php" title="Configurar grados">Configurar grados</a> | </strong>
+            </div>
+            <table cellpadding="0" cellspacing="5" border="0">
+                <tr>
+                    <td><label for="institucion">Institución:</label></td>
+                    <td><input type="text" name="institucion" value="<?php echo $leer['institucion']; ?>" size="50" maxlength="100" title="Escriba el nombre de la institución."></td>
+                </tr>
+                <tr>
+                    <td><label for="descripcion">Descripción elecciones:</label></td>
+                    <td><input type="text" name="descripcion" value="<?php echo $leer['descripcion']; ?>" size="50" maxlength="100" title="Escriba la descripción de las votaciones"></td>
+                </tr>
+                <tr>
+                    <td><label for="activar">Activar votación:</label></td>
+                    <?php if ($leer[' activo '] == "S") : ?>
+                        <td><input type="checkbox" name="activar" value="S" checked></td>
+                    <?php else : ?>
+                        <td><input type="checkbox" name="activar" value="S"></td>
+                    <?php endif; ?>
+                </tr>
+                <tr>
+                    <td><label for="clave">Voto protegido por contraseña:</label></td>
+                    <?php if ($leer[' clave'] == "S") : ?>
+                        <td><input type="checkbox" name="clave" value="S" checked></td>
+                    <?php else : ?>
+                        <td><input type="checkbox" name="clave" value="S"></td>
+                    <?php endif; ?>
+                </tr>
+            </table><br>
+            <div class="cen">
+                <input type="submit" name="envia_config" value="Guardar" title="Guardar los datos">
+            </div>
+        </form>
+
+    </body>
+
+    </html>
+<?php endif; ?>

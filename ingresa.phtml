@@ -1,0 +1,43 @@
+<!doctype html">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title><?php echo $leer['institucion']; ?> - EducoVota</title>
+    <link href="estilo3.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <?php include_once("java.html"); ?>
+    <img src="iconos/EscudoColegio.png" style="display:scroll; position:absolute; top:5px;" width="130" alt="Escudo de Colegio"><br>
+    <h2><?php echo $leer['institucion'] . '<br>' . $leer['descripcion']; ?></h2>
+    <p>Para realizar el proceso de votación siga los siguientes tres pasos:</p>
+    <ul>
+        <li>
+            <img src="iconos/n1.png" width="30px" alt="#1">
+            Ingrese al sistema de votación, escribiendo su número de documento (costado derecho de esta página).
+        </li>
+        <li>
+            <img src="iconos/n2.png" width="30px" alt="#2">
+            Al ingresar al sistema encontrará el tarjetón electoral para votar por sus representantes preferidos. Seleccione los de su preferencia dando clic sobre la foto.
+        </li>
+        <li>
+            <img src="iconos/n3.png" width="30px" alt="#3">
+            Para registrar su voto de clic en el botón <strong>votar</strong>
+        </li>
+    </ul>
+
+    <h3>Ingreso al sistema</h3>
+    <form id="consulta" action="index.php" method="post">
+        <label for="documento">Documento del estudiante:</label>
+        <input type="text" name="documento" size="20" maxlength="50" title="Escriba el documento del estudiante" autofocus>
+        <?php if ($leer['clave'] == "S") : ?>
+            <label for="contra">Contraseña de acceso:</label>
+            <input type="password" name="contra" size="20" maxlength="50" title="Escriba la contraseña de acceso">
+        <?php endif; ?>
+        <input type="submit" name="envia_consulta" value="Ingresar" title="Ingresar al sistema">
+    </form>
+</body>
+
+</html>

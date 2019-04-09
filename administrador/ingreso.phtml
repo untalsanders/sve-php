@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title><?php echo $leer['institucion']; ?> - EducoVota</title>
+    <link href="../estilo4.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <img src="../iconos/EscudoColegio.png" alt="Logo del Colegio">
+    <h2>
+        <?php echo $leer['institucion']; ?>
+        <br>ADMINISTRACIÓN EDUCOVOTA
+    </h2>
+    <form id="administracion" action="index.php" method="post">
+        <input type="hidden" name="envia_acceso">
+        <div>
+            <label for="usuario">Nombre de usuario:</label>
+            <input type="text" name="usuario" title="Escriba el nombre de usuario" autofocus>
+        </div>
+        <div>
+            <label for="clave">Contraseña:</label>
+            <input type="password" name="clave" title="Escriba la contrase�a de acceso">
+        </div>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</body>
+
+</html>
