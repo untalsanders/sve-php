@@ -1,5 +1,3 @@
 <?php
 
-$app->get("/", function ($request, $response, $args) {
-    return "Hello World";
-});
+$app->get("/", \App\Controllers\HomeController::class . ':index');
