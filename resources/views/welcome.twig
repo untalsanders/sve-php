@@ -1,7 +1,46 @@
 {% extends "templates/app.twig" %}
 
 {% block content %}
-    <h1>
-        {{ message }}
-    </h1>
+    {% for institucion in instituciones %}
+        <h1>
+            {{ institucion.institucion }}
+        </h1>
+        <h2>
+            {{ institucion.descripcion }}
+        </h2>
+
+        <p>
+            Para realizar el proceso de votación siga los siguientes tres pasos:
+        </p>
+        <ul>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Ingrese al sistema de votación, escribiendo su número de documento (costado derecho de esta página).
+            </li>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Al ingresar al sistema encontrará el tarjetón electoral para votar por sus representantes preferidos. Seleccione los de su preferencia dando clic sobre la foto.
+            </li>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Para registrar su voto de clic en el botón
+                <strong>
+                    votar
+                </strong>
+            </li>
+        </ul>
+        <h3>
+            Ingreso al sistema
+        </h3>
+        <form action="index.php" id="consulta" method="post">
+            <input name="documento" placeholder="Documento del estudiante" type="text"/>
+            {% if institucion.clave == "S" %}
+                <label for="contra">
+                    Contraseña de acceso:
+                </label>
+                <input name="contra" placeholder="Contraseña de acceso" type="password"/>
+            {% endif %}
+            <input name="envia_consulta" title="Ingresar al sistema" type="submit" value="Ingresar"/>
+        </form>
+    {% endfor %}
 {% endblock %}
