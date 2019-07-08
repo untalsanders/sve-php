@@ -22,6 +22,11 @@ $app = new \Slim\App([
 
 $container = $app->getContainer();
 
+$container["db"] = function ($container) {
+    $db = \App\Core\Classes\Database::getInstance();
+    return $db->connect();
+};
+
 $container["view"] = function ($container) {
     $view = new \Slim\Views\Twig(APP_ROOT . "/resources/views", [
         "cache" => false

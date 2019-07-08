@@ -8,6 +8,14 @@ class HomeController extends Controller
 {
     public function index($request, $response, $args)
     {
-        return $this->view->render($response, "welcome.twig", ["message" => "Hello World",]);
+        $sql = "SELECT * FROM general";
+        $result = $this->db->query($sql);
+        $instituciones = array();
+
+        while ($row = $result->fetch()) {
+            $instituciones[] = $row;
+        }
+
+        return $this->view->render($response, "welcome.twig", ["instituciones" => $instituciones]);
     }
 }
