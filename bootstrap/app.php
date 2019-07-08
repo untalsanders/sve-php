@@ -1,0 +1,23 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Register The Composer Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so we do not have to manually load any of
+| our application's PHP classes. It just feels great to relax.
+|
+*/
+require APP_ROOT . "/vendor/autoload.php";
+
+$app = new \Slim\App([
+    "settings" => [
+        "defaultErrorDetails" => true,
+        "addContentLengthHeader" => false
+    ]
+]);
+
+require_once APP_ROOT . "/routes/web.php";
