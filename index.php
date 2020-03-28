@@ -13,7 +13,7 @@ $estado = $db->query($sql);
 $leer = $estado->fetch_array(MYSQLI_ASSOC);
 
 if ($leer['activo'] == "S") {
-    if (!isset($_POST['envia_consulta'])) {
+    if (!isset($_POST['envia_consluta'])) {
         include_once("ingresa.phtml");
     } else {
         /**

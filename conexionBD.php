@@ -15,7 +15,7 @@ if (!function_exists('conectarse')) {
         /*
          * Nombre de la Base de Datos que se desea utilizar
          */
-        $db_nombre = "eduvota";
+        $db_nombre = "db_sie";
         /*
          * Nombre del usuario con permisos para acceder a la BD
          */
