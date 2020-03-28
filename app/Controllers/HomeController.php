@@ -8,14 +8,16 @@ class HomeController extends Controller
 {
     public function index($request, $response, $args)
     {
-        $sql = "SELECT * FROM general";
-        $result = $this->db->query($sql);
+        $sql = "SELECT * FROM general WHERE activo = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(1, 'S');
+        $stmt->execute();
         $instituciones = array();
 
-        while ($row = $result->fetch()) {
+        while ($row = $stmt->fetch()) {
             $instituciones[] = $row;
         }
 
-        return $this->view->render($response, "welcome.twig", ["instituciones" => $instituciones]);
+        return $this->view->render($response, "home/home.twig", ["instituciones" => $instituciones]);
     }
 }

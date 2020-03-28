@@ -18,7 +18,7 @@ class Database
 
     /**
      * Se conecta a la base de datos
-     * 
+     *
      * @return object \Doctrine\DBAL\DriverManager
      */
     public function connect()
@@ -26,7 +26,7 @@ class Database
         $config = new Configuration();
 
         $connectionParams = array(
-            'dbname' => 'eduvota',
+            'dbname' => 'db_sie',
             'user' => 'sanders',
             'password' => '12345',
             'host' => 'localhost',
