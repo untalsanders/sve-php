@@ -11,35 +11,43 @@
 | our application's PHP classes. It just feels great to relax.
 |
 */
+
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Factory\AppFactory;
+
 require APP_ROOT . "/vendor/autoload.php";
 
-$app = new \Slim\App([
-    "settings" => [
-        "defaultErrorDetails" => true,
-        "addContentLengthHeader" => false
-    ]
-]);
+$app = AppFactory::create();
 
-$container = $app->getContainer();
+$app->addErrorMiddleware(true, true, false);
 
-$container["db"] = function ($container) {
-    $db = \App\Core\Classes\Database::getInstance();
-    return $db->connect();
-};
+$app->get('/', function (Request $request, Response $response, array $args) {
+    $payload = json_encode(['hello' => 'world'], JSON_PRETTY_PRINT);
+    $response->getBody()->write($payload);
+    return $response->withHeader('Content-Type', 'application/json');
+});
 
-$container["view"] = function ($container) {
-    $view = new \Slim\Views\Twig(APP_ROOT . "/resources/views", [
-        "cache" => false
-    ]);
+// $container = $app->getContainer();
 
-    $view->addExtension(
-        new \Slim\Views\TwigExtension(
-            $container->router,
-            $container->request->getUri()
-        )
-    );
+// $container["db"] = function ($container) {
+//     $db = \App\Core\Classes\Database::getInstance();
+//     return $db->connect();
+// };
 
-    return $view;
-};
+// $container["view"] = function ($container) {
+//     $view = new \Slim\Views\Twig(APP_ROOT . "/resources/views", [
+//         "cache" => false
+//     ]);
 
-require_once APP_ROOT . "/routes/web.php";
+//     $view->addExtension(
+//         new \Slim\Views\TwigExtension(
+//             $container->router,
+//             $container->request->getUri()
+//         )
+//     );
+
+//     return $view;
+// };
+
+// require_once APP_ROOT . "/routes/web.php";

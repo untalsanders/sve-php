@@ -20,4 +20,24 @@ class HomeController extends Controller
 
         return $this->view->render($response, "home/home.twig", ["instituciones" => $instituciones]);
     }
+
+    public function tarjeton($request, $response, $args)
+    {
+        $sqlEstudiante = "SELECT * FROM estudiantes WHERE documento = ?";
+        $estudiante = $this->db->fetchAssoc($sqlEstudiante, [$request->getParsedBody()['dni']]);
+
+        $sqlInstitucion = "SELECT * FROM general WHERE activo = ?";
+        $institucion = $this->db->fetchAssoc($sqlInstitucion, ["S"]);
+
+        $sqlCategorias = "SELECT * FROM categorias";
+        $categorias = $this->db->query($sqlCategorias);
+
+        // $sqlCandidato = "SELECT * FROM candidatos WHERE representante = $categorias";
+
+        return $this->view->render($response, "home/tarjeton.twig", [
+            "estudiante" => $estudiante,
+            "institucion" => $institucion,
+            "categorias" => $categorias
+        ]);
+    }
 }
