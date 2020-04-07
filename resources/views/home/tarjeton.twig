@@ -1,0 +1,23 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+	<div>
+		Estudiante:
+		{{ estudiante.nombres }}
+		{{ estudiante.apellidos }}
+	</div>
+	<h2>{{ institucion.institucion | upper }}</h2>
+	<h3>{{ institucion.descripcion | upper }}</h3>
+	<form action="" method="post">
+		<div>{{ "TARJETÓN ELECTORAL" | upper }}</div>
+	</form>
+	<table>
+		<tbody>
+			{% for categoria in categorias %}
+				<tr>
+					<td>{{ categoria.descripcion }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

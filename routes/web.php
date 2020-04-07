@@ -1,3 +1,6 @@
 <?php
 
-$app->get("/", \App\Controllers\HomeController::class . ':index');
+use App\Controllers\HomeController;
+
+$app->get("/", HomeController::class . ':index');
+$app->post("/tarjeton", HomeController::class . ':tarjeton');
