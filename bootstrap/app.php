@@ -12,42 +12,29 @@
 |
 */
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use DI\Container;
+use Slim\Views\Twig;
 use Slim\Factory\AppFactory;
+use App\Core\Classes\Database;
+use Slim\Views\TwigMiddleware;
 
 require APP_ROOT . "/vendor/autoload.php";
 
+$container = new Container();
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->addErrorMiddleware(true, true, false);
+/* Display Errors */
+$app->addErrorMiddleware(true, false, false);
 
-$app->get('/', function (Request $request, Response $response, array $args) {
-    $payload = json_encode(['hello' => 'world'], JSON_PRETTY_PRINT);
-    $response->getBody()->write($payload);
-    return $response->withHeader('Content-Type', 'application/json');
+$container->set("db", function () {
+    return Database::getInstance()->connect();
 });
 
-// $container = $app->getContainer();
+$container->set('view', function () {
+    return Twig::create(APP_ROOT . "/resources/views", ['cache' => false]);
+});
 
-// $container["db"] = function ($container) {
-//     $db = \App\Core\Classes\Database::getInstance();
-//     return $db->connect();
-// };
+$app->add(TwigMiddleware::createFromContainer($app));
 
-// $container["view"] = function ($container) {
-//     $view = new \Slim\Views\Twig(APP_ROOT . "/resources/views", [
-//         "cache" => false
-//     ]);
-
-//     $view->addExtension(
-//         new \Slim\Views\TwigExtension(
-//             $container->router,
-//             $container->request->getUri()
-//         )
-//     );
-
-//     return $view;
-// };
-
-// require_once APP_ROOT . "/routes/web.php";
+require_once APP_ROOT . "/routes/web.php";
