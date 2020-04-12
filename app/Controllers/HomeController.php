@@ -18,7 +18,13 @@ class HomeController extends Controller
             $instituciones[] = $row;
         }
 
-        return $this->container->get('view')->render($response, "home/home.twig", ["instituciones" => $instituciones]);
+        $appName = $this->container->get('config')['APP_NAME'];
+
+        return $this->container->get('view')->render($response, "home/home.twig", [
+            "titlePage" => __FUNCTION__,
+            "instituciones" => $instituciones,
+            "appName" => $appName
+        ]);
     }
 
     public function tarjeton($request, $response, $args)

@@ -16,6 +16,7 @@ use DI\Container;
 use Slim\Views\Twig;
 use Slim\Factory\AppFactory;
 use App\Core\Classes\Database;
+use Dotenv\Dotenv;
 use Slim\Views\TwigMiddleware;
 
 require APP_ROOT . "/vendor/autoload.php";
@@ -26,6 +27,10 @@ $app = AppFactory::create();
 
 /* Display Errors */
 $app->addErrorMiddleware(true, false, false);
+
+$container->set("config", function () {
+    return Dotenv::createImmutable(APP_ROOT)->load();
+});
 
 $container->set("db", function () {
     return Database::getInstance()->connect();

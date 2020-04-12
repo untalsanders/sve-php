@@ -1,5 +1,9 @@
 {% extends "templates/app.twig" %}
 
+{% block title %}
+	{{ titlePage | capitalize }}
+{% endblock %}
+
 {% block content %}
 	{% for institucion in instituciones %}
 		<h1>{{ institucion.institucion }}</h1>
@@ -20,7 +24,7 @@
 				<strong>votar</strong>
 			</li>
 		</ul>
-		<h3>Ingreso al sistema</h3>
+		<h3>Ingreso al Sistema</h3>
 		<form action="/tarjeton" method="post">
 			<input type="text" name="dni" placeholder="DNI del estudiante"/>
 			{% if institucion.clave == "S" %}
