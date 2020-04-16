@@ -36,4 +36,7 @@ if (!defined('APP_ROOT')) {
  */
 require_once APP_ROOT . '/bootstrap/app.php';
 
+/**
+ * Run Applicacion
+ */
 $app->run();
