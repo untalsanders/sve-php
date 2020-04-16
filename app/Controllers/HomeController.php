@@ -21,7 +21,7 @@ class HomeController extends Controller
         $appName = $this->container->get('config')['APP_NAME'];
 
         return $this->container->get('view')->render($response, "home/home.twig", [
-            "titlePage" => __FUNCTION__,
+            "titlePage" => 'Home',
             "instituciones" => $instituciones,
             "appName" => $appName
         ]);

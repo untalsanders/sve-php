@@ -1,1 +1,1 @@
-﻿# Sistema de Votación Educativo
+﻿# Student Electoral System
