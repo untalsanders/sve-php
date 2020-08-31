@@ -1,36 +1,39 @@
 {% extends "templates/app.twig" %}
 
 {% block title %}
-	{{ titlePage | capitalize }}
-{% endblock %}
+    {{ titlePage | capitalize }}
+{% endblock %} 
 
-{% block content %}
-	{% for institucion in instituciones %}
-		<h1>{{ institucion.institucion }}</h1>
-		<h2>{{ institucion.descripcion }}</h2>
-		<p>Para realizar el proceso de votación siga los siguientes tres pasos:</p>
-		<ul>
-			<li>
-				<i class="fa fa-check-circle"></i>
-				Ingrese al sistema de votación, escribiendo su número de documento (costado derecho de esta página).
-			</li>
-			<li>
-				<i class="fa fa-check-circle"></i>
-				Al ingresar al sistema encontrará el tarjetón electoral para votar por sus representantes preferidos. Seleccione los de su preferencia dando clic sobre la foto.
-			</li>
-			<li>
-				<i class="fa fa-check-circle"></i>
-				Para registrar su voto de clic en el botón
-				<strong>votar</strong>
-			</li>
-		</ul>
-		<h3>Ingreso al Sistema</h3>
-		<form action="/tarjeton" method="post">
-			<input type="text" name="dni" placeholder="DNI del estudiante"/>
-			{% if institucion.clave == "S" %}
-				<input type="password" name="password" placeholder="Contraseña de acceso"/>
-			{% endif %}
-			<input type="submit" title="Ingresar al sistema" value="Ingresar"/>
-		</form>
-	{% endfor %}
+{% block content %} 
+    {% for institucion in instituciones %}
+        <h1>{{ institucion.institucion }}</h1>
+        <h2>{{ institucion.descripcion }}</h2>
+        <p>Para realizar el proceso de votación siga los siguientes tres pasos:</p>
+        <ul>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Ingrese al sistema de votación, escribiendo su número de documento
+                (costado derecho de esta página).
+            </li>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Al ingresar al sistema encontrará el tarjetón electoral para votar por
+                sus representantes preferidos. Seleccione los de su preferencia dando
+                clic sobre la foto.
+            </li>
+            <li>
+                <i class="fa fa-check-circle"></i>
+                Para registrar su voto de clic en el botón
+                <strong>votar</strong>
+            </li>
+        </ul>
+        <h3>Ingreso al Sistema</h3>
+        <form action="/tarjeton" method="post">
+            <input type="text" name="dni" placeholder="DNI del estudiante" />
+            {% if institucion.clave == "S" %}
+                <input type="password" name="password" placeholder="Contraseña de acceso" />
+            {% endif %}
+            <input type="submit" title="Ingresar al sistema" value="Ingresar" />
+        </form>
+    {% endfor %} 
 {% endblock %}

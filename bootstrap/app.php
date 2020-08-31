@@ -43,3 +43,5 @@ $container->set('view', function () {
 $app->add(TwigMiddleware::createFromContainer($app));
 
 require_once APP_ROOT . "/routes/web.php";
+
+return $app;

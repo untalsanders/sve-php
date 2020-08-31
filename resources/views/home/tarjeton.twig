@@ -1,23 +1,32 @@
 {% extends "templates/app.twig" %}
 
+{% block title %}
+    {{ titlePage | capitalize }}
+{% endblock %}
+
 {% block content %}
-	<div>
-		Estudiante:
-		{{ estudiante.nombres }}
-		{{ estudiante.apellidos }}
-	</div>
-	<h2>{{ institucion.institucion | upper }}</h2>
-	<h3>{{ institucion.descripcion | upper }}</h3>
-	<form action="" method="post">
-		<div>{{ "TARJETÓN ELECTORAL" | upper }}</div>
-	</form>
-	<table>
-		<tbody>
-			{% for categoria in categorias %}
-				<tr>
-					<td>{{ categoria.descripcion }}</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+    <h4>Estudiante: {{ estudiante.nombres }} {{ estudiante.apellidos }}</h4>
+    <h2>{{ institucion.institucion | upper }}</h2>
+    <h3>{{ institucion.descripcion | upper }}</h3>
+    <form action="" method="post">
+        <div>{{ "TARJETÓN ELECTORAL" | upper }}</div>
+        <ul>
+            {% for categoria in categorias %}
+                <li>
+                    <span>{{ categoria.descripcion }}</span>
+                    <ol>
+                        {% for candidato in candidatos %}
+                            {% if categoria.id == candidato.representante  %}
+                                <li>
+                                    <input type="radio" name="candidato_a_{{ categoria.nombre | lower }}">
+                                    <span>{{ candidato.nombres | capitalize }} {{ candidato.apellidos | capitalize }}</span>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+    
 {% endblock %}
