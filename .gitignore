@@ -43,3 +43,9 @@ composer.phar
 
 ### DotEnv ###
 .env
+
+### NPM | NODE ###
+/node_modules/
+
+### Public Assets ###
+/public/assets/

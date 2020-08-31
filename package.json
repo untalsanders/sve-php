@@ -1,0 +1,31 @@
+{
+    "name": "educovota",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "build": "webpack -p --display-error-detail --progress --colors",
+        "build-dev": "webpack --display-error-detail --progress --colors",
+        "watch": "webpack -d --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sandersgutierrez/educovota.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sandersgutierrez/educovota/issues"
+    },
+    "homepage": "https://github.com/sandersgutierrez/educovota#readme",
+    "devDependencies": {
+        "css-loader": "^4.2.2",
+        "style-loader": "^1.2.1",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    }
+}
