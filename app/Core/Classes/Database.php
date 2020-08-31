@@ -26,7 +26,7 @@ class Database
         $config = new Configuration();
 
         $connectionParams = array(
-            'dbname' => 'db_sie',
+            'dbname' => 'ses',
             'user' => 'sanders',
             'password' => '12345',
             'host' => 'localhost',
