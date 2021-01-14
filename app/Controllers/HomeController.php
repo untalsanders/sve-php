@@ -21,9 +21,9 @@ class HomeController extends Controller
         $appName = $this->container->get('config')['APP_NAME'];
 
         return $this->container->get('view')->render($response, "home/home.twig", [
-            "titlePage" => 'Home',
+            "titlePage"     => 'Home',
             "instituciones" => $instituciones,
-            "appName" => $appName
+            "appName"       => $appName
         ]);
     }
 
@@ -49,12 +49,12 @@ class HomeController extends Controller
         $appName = $this->container->get('config')['APP_NAME'];
 
         return $this->container->get('view')->render($response, "home/tarjeton.twig", [
-            "titlePage" => 'Tarjetón',
-            "estudiante" => $estudiante,
+            "titlePage"   => 'Tarjetón',
+            "estudiante"  => $estudiante,
             "institucion" => $institucion,
-            "categorias" => $categorias,
-            "appName" => $appName,
-            "candidatos" => $candidatos
+            "categorias"  => $categorias,
+            "appName"     => $appName,
+            "candidatos"  => $candidatos
         ]);
     }
 }

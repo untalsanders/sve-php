@@ -26,11 +26,11 @@ class Database
         $config = new Configuration();
 
         $connectionParams = array(
-            'dbname' => 'ses',
-            'user' => 'sanders',
+            'dbname'   => 'ses',
+            'user'     => 'sanders',
             'password' => '12345',
-            'host' => 'localhost',
-            'driver' => 'mysqli',
+            'host'     => 'localhost',
+            'driver'   => 'mysqli',
         );
 
         return DriverManager::getConnection($connectionParams, $config);
