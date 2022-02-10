@@ -1,8 +1,8 @@
 {
-    "name": "sandersgutierrez/ses-app",
-    "description": "Student Electoral System",
+    "name": "sandersgutierrez/sve",
+    "description": "Sistema de Votación Estudiantil",
     "type": "project",
-    "homepage": "http://github.com/sandersgutierrez/ses-app",
+    "homepage": "https://sgdev-sistema-votacion-estudiantil.herokuapp.com",
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +12,8 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "php": "^7.3",
+        "php": "8.*",
+        "ext-pdo": "*",
         "slim/slim": "4.*",
         "slim/psr7": "^1.0",
         "slim/twig-view": "^3.0",
@@ -42,7 +43,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "start": "php -S localhost:8080 -t public",
+        "dev": "php -S localhost:8000 -t public",
         "test": "phpunit --colors=always --testdox tests/"
     }
 }

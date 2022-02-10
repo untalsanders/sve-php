@@ -18,25 +18,27 @@ if (PHP_SAPI !== 'cli-server') {
 }
 
 /**
- * Separador de Directorios
+ * Directory Separator
  */
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 
 /**
- * Directorio Raíz de la Aplicación
+ * Root directory of application
  */
 if (!defined('APP_ROOT')) {
-    define('APP_ROOT', realpath($_SERVER['DOCUMENT_ROOT'] . '/../'));
+    define('APP_ROOT', dirname($_SERVER['DOCUMENT_ROOT'], 1));
 }
 
-/**
- * Bootstrap Applicacion
- */
-require_once APP_ROOT . '/bootstrap/app.php';
+echo APP_ROOT;
 
 /**
- * Run Applicacion
+ * Bootstrap Application
+ */
+$app = require APP_ROOT . '/bootstrap/app.php';
+
+/**
+ * Run Application
  */
 $app->run();
