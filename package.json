@@ -2,7 +2,11 @@
     "name": "sistema-votacion-estudiantil",
     "version": "0.1.0",
     "description": "Sistema de Votación Estudiantil",
-    "keywords": ["sistema","votación","estudiantil"],
+    "keywords": [
+        "sistema",
+        "votación",
+        "estudiantil"
+    ],
     "license": "MIT",
     "private": true,
     "repository": {
@@ -23,7 +27,7 @@
         "watch": "webpack -d --watch"
     },
     "devDependencies": {
-        "css-loader": "^4.2.2",
+        "css-loader": "^6.6.0",
         "style-loader": "^1.2.1",
         "webpack": "^5.39.0",
         "webpack-cli": "^3.3.12"
