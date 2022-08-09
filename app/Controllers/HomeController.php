@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Core\Classes\Controller;
+use App\Core\Classes\AbstractController;
 
-class HomeController extends Controller
+class HomeController extends AbstractController
 {
-    public function home($request, $response, array $argss)
+    public function init($request, $response, array $argss)
     {
         $sql = "SELECT * FROM general WHERE activo = ?";
         $stmt = $this->container->get('db')->prepare($sql);
@@ -18,43 +18,39 @@ class HomeController extends Controller
             $instituciones[] = $row;
         }
 
-        $appName = $this->container->get('config')['APP_NAME'];
-
-        return $this->container->get('view')->render($response, "home/home.twig", [
-            "titlePage"     => 'Home',
+        return $this->render($response, "home/home.twig", [
+            "pageTitle"     => 'Inicio',
             "instituciones" => $instituciones,
-            "appName"       => $appName
+            "appName"       => $this->getAppName(),
         ]);
     }
 
     public function tarjeton($request, $response, $args)
     {
         // Datos de la institucion
-        $sqlInstitucion = "SELECT * FROM general WHERE activo = ?";
-        $institucion = $this->container->get('db')->fetchAssoc($sqlInstitucion, ["S"]);
+        $queryInstitucion = "SELECT * FROM general WHERE activo = ?";
+        $institucion = $this->container->get('db')->fetchAssoc($queryInstitucion, ["S"]);
 
         // Datos del estudiante
-        $sqlEstudiante = "SELECT * FROM estudiantes WHERE documento = ?";
-        $estudiante = $this->container->get('db')->fetchAssoc($sqlEstudiante, [$request->getParsedBody()['dni']]);
+        $queryEstudiante = "SELECT * FROM estudiantes WHERE dni = ?";
+        $estudiante = $this->container->get('db')->fetchAssoc($queryEstudiante, [$request->getParsedBody()['dni']]);
 
         // Datos de los candidatos
-        $sqlCategorias = "SELECT * FROM categorias";
-        $categorias = $this->container->get('db')->query($sqlCategorias);
+        $queryCategorias = "SELECT * FROM categorias";
+        $categorias = $this->container->get('db')->query($queryCategorias);
 
-        $sqlCandidato = "SELECT t1.nombres, t1.apellidos, t1.representante FROM candidatos AS t1 INNER JOIN categorias as t2 ON t1.representante = t2.id";
-        $stmt = $this->container->get('db')->prepare($sqlCandidato);
+        $queryCandidato = "SELECT t1.nombres, t1.apellidos, t1.representante FROM candidatos AS t1 INNER JOIN categorias as t2 ON t1.representante = t2.id";
+        $stmt = $this->container->get('db')->prepare($queryCandidato);
         $stmt->execute();
         $candidatos = $stmt->fetchAll();
 
-        $appName = $this->container->get('config')['APP_NAME'];
-
-        return $this->container->get('view')->render($response, "home/tarjeton.twig", [
-            "titlePage"   => 'Tarjetón',
+        return $this->render($response, "home/tarjeton.twig", [
+            "pageTitle"   => 'Tarjetón',
             "estudiante"  => $estudiante,
             "institucion" => $institucion,
             "categorias"  => $categorias,
-            "appName"     => $appName,
-            "candidatos"  => $candidatos
+            "appName"     => $this->getAppName(),
+            "candidatos"  => $candidatos,
         ]);
     }
 }

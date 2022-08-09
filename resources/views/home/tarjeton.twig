@@ -1,15 +1,15 @@
 {% extends "templates/app.twig" %}
 
 {% block title %}
-    {{ titlePage | capitalize }}
+    {{ pageTitle | capitalize }}
 {% endblock %}
 
 {% block content %}
-    <h4>Estudiante: {{ estudiante.nombres }} {{ estudiante.apellidos }}</h4>
+    <h1>Estudiante: {{ estudiante.nombres }} {{ estudiante.apellidos }}</h1>
     <h2>{{ institucion.institucion | upper }}</h2>
-    <h3>{{ institucion.descripcion | upper }}</h3>
+    <span>{{ institucion.descripcion | upper }}</span>
     <form action="" method="post">
-        <div>{{ "TARJETÓN ELECTORAL" | upper }}</div>
+        <h3>{{ "TARJETÓN ELECTORAL" | upper }}</h3>
         <ul>
             {% for categoria in categorias %}
                 <li>
@@ -28,5 +28,4 @@
             {% endfor %}
         </ul>
     </form>
-    
 {% endblock %}

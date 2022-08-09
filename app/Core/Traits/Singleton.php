@@ -42,14 +42,14 @@ trait Singleton
     /**
      * Make sleep magic method private, so nobody can serialize instance.
      */
-    private function __sleep()
+    public function __sleep()
     {
     }
 
     /**
      * Make wakeup magic method private, so nobody can unserialize instance.
      */
-    private function __wakeup()
+    public function __wakeup()
     {
         trigger_error("Invalid operation: You don't to unserialize a instance of " . self::class . " class.");
     }

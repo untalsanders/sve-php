@@ -27,9 +27,10 @@ class Database
 
         $connectionParams = array(
             'dbname'   => 'ses',
-            'user'     => 'sanders',
+            'user'     => 'root',
             'password' => '12345',
-            'host'     => 'localhost',
+            'host'     => '127.0.0.1',
+            'port'     => '3307',
             'driver'   => 'mysqli',
         );
 

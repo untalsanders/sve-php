@@ -31,8 +31,6 @@ if (!defined('APP_ROOT')) {
     define('APP_ROOT', dirname($_SERVER['DOCUMENT_ROOT'], 1));
 }
 
-echo APP_ROOT;
-
 /**
  * Bootstrap Application
  */
