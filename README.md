@@ -7,22 +7,30 @@
 
 ## 🏁 Empezar
 
- 1. Antes de instalar las dependencias por favor verifique la disponibilidad de las extensiones de PHP requeridas.
+ 1. Instalar Composer.
 
     ```shell
-    composer check-platform-reqs
+    chmod +x install-composer.sh
+
+    ./install-composer.sh
     ```
 
- 2. Instalar dependencias
+ 2. Antes de instalar las dependencias por favor verifique la disponibilidad de las extensiones de PHP requeridas.
 
     ```shell
-    composer install
+    php composer.phar check-platform-reqs
     ```
 
- 3. Iniciar servidor de desarrollo
+ 3. Instalar dependencias
 
     ```shell
-    composer run dev
+    php composer.phar install
+    ```
+
+ 4. Iniciar servidor de desarrollo
+
+    ```shell
+    php composer.phar run dev
     ```
 
 ## 👨🏿‍💻 Autor
