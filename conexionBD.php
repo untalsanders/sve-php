@@ -11,15 +11,19 @@ if (!function_exists('conectarse')) {
         /*
          * Host BD al que conectarse, habitualmente es localhost
          */
-        $db_host = "localhost";
+        $db_host = "127.0.0.1";
+        /*
+         * Port BD al que conectarse, habitualmente es 3306
+         */
+        $db_port = 3307;
         /*
          * Nombre de la Base de Datos que se desea utilizar
          */
-        $db_nombre = "db_sie";
+        $db_nombre = "ses";
         /*
          * Nombre del usuario con permisos para acceder a la BD
          */
-        $db_user = "sanders";
+        $db_user = "root";
         /*
          * Contraseña del usuario de la BD
          */
@@ -27,7 +31,7 @@ if (!function_exists('conectarse')) {
         /*
          * Ahora estamos realizando una conexi�n y la llamamos $link
          */
-        $conn = new mysqli($db_host, $db_user, $db_pass, $db_nombre)
+        $conn = new mysqli($db_host, $db_user, $db_pass, $db_nombre, $db_port)
             or die("Error conectando a la base de datos.");
         /*
          * Retornamos $link  para hacer consultas a la BD.

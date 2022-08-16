@@ -10,7 +10,10 @@ $db = conectarse();
  */
 $sql = "SELECT * FROM general";
 $estado = $db->query($sql);
-$leer = $estado->fetch_array(MYSQLI_ASSOC);
+$leer = $estado->fetch_assoc();
+// echo "<pre>";
+// var_dump($leer);
+// echo "</pre>";
 
 if ($leer['activo'] == "S") {
     if (!isset($_POST['envia_consulta'])) {

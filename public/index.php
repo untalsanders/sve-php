@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /**
- * Sistema Electoral Universitario
+ * Sistema Electoral Estudiantil
  *
- * @package  eduvota
+ * @package  ses
  * @author   Sanders Gutiérrez <ing.sanders@gmail.com>
  */
 

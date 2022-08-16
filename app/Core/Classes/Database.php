@@ -5,6 +5,7 @@ namespace App\Core\Classes;
 use App\Core\Traits\Singleton;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
+use Dotenv\Dotenv;
 
 /**
  * Gestiona la conexión a la base de datos
@@ -23,15 +24,16 @@ class Database
      */
     public function connect()
     {
+        Dotenv::createImmutable(APP_ROOT)->load();
         $config = new Configuration();
 
         $connectionParams = array(
-            'dbname'   => 'ses',
-            'user'     => 'root',
-            'password' => '12345',
-            'host'     => '127.0.0.1',
-            'port'     => '3307',
-            'driver'   => 'mysqli',
+            'dbname'   => $_ENV['DB_NAME'],
+            'user'     => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASS'],
+            'host'     => $_ENV['DB_HOST'],
+            'port'     => $_ENV['DB_PORT'],
+            'driver'   => $_ENV['DB_DRIVER'],
         );
 
         return DriverManager::getConnection($connectionParams, $config);
