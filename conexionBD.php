@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Funcionar para conectarse a la base de datos
+ * Función para conectarse a la base de datos
  *
  * @return MySQLi $link
  */
@@ -19,7 +19,7 @@ if (!function_exists('conectarse')) {
         /*
          * Nombre de la Base de Datos que se desea utilizar
          */
-        $db_nombre = "ses";
+        $db_nombre = "ses_old";
         /*
          * Nombre del usuario con permisos para acceder a la BD
          */
@@ -29,7 +29,7 @@ if (!function_exists('conectarse')) {
          */
         $db_pass = "12345";
         /*
-         * Ahora estamos realizando una conexi�n y la llamamos $link
+         * Ahora estamos realizando una conexión y la llamamos $link
          */
         $conn = new mysqli($db_host, $db_user, $db_pass, $db_nombre, $db_port)
             or die("Error conectando a la base de datos.");
