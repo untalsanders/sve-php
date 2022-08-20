@@ -13,7 +13,7 @@
 $form_campos = array(
     'nom_est'         => 'Nombres estudiante',
     'ape_est'         => 'Apellidos estudiante',
-    'institucion'     => 'Institucion',
+    'institucion'     => 'Institución',
     'nacionalidad'    => 'Nacionalidad estudiante',
     'lugar'           => 'Lugar de nacimiento del estudiante',
     'peso'            => 'Peso del estudiante',
@@ -69,11 +69,27 @@ $form_campos = array(
 
 extract($form_campos);
 
-/**
- * Función que valida valores requeridos, email, alfabéticos, alfanuméricos, 
- * numéricos y fecha.
- */
+if (!function_exists('logControl')) {
+    /**
+     * Función para guardar los datos de control
+     */
+    function logControl($conn, $action, $dest): void
+    {
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        $stmt = $conn->prepare("INSERT INTO control (c_fecha, c_hora, c_ip, c_accion, c_idest) VALUES (?, ?, ?, ?, ?);");
+        $fecha = date("Y-m-d");
+        $hora = date("H:i:s");
+        $ip = $_SERVER["REMOTE_ADDR"];
+        $stmt->bind_param("ssssi", $fecha, $hora, $ip, $action, $dest);
+        $stmt->execute();
+    }
+}
+
 if (!function_exists('valida')) {
+    /**
+     * Función que valida valores requeridos, email, alfabéticos, alfanuméricos,
+     * numéricos y fecha.
+     */
     function valida($arreglo)
     {
         global $form_campos;
@@ -184,10 +200,10 @@ if (!function_exists('valida')) {
     }
 }
 
-/**
- * Función que borra espacios de más
- */
 if (!function_exists('borraEspacios')) {
+    /**
+     * Función que borra espacios de más
+     */
     function borraEspacios($cadena)
     {
         $patron = array("/^[ ]+/m", "/[ ]+/m", "/[ ]+\$/m");
@@ -196,10 +212,10 @@ if (!function_exists('borraEspacios')) {
     }
 }
 
-/**
- * Funciónn convertir a mayúsculas
- */
 if (!function_exists('cambiaMayuscula')) {
+    /**
+     * Funciónn convertir a mayúsculas
+     */
     function cambiaMayuscula($cadena)
     {
         $mayuscula = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜ";
@@ -208,10 +224,10 @@ if (!function_exists('cambiaMayuscula')) {
     }
 }
 
-/** 
- * Función convertir a minísculas
- */
 if (!function_exists('cambiaMinuscula')) {
+    /**
+     * Función convertir a minísculas
+     */
     function cambiaMinuscula($cadena)
     {
         $mayuscula = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚÜ";
@@ -220,10 +236,10 @@ if (!function_exists('cambiaMinuscula')) {
     }
 }
 
-/** 
- * Función que genera nombre de usuario
- */
 if (!function_exists('nombreUsuario')) {
+    /**
+     * Función que genera nombre de usuario
+     */
     function nombreUsuario($cadena)
     {
         $acento = array("á" => "a", "é" => "e", "í" => "i", "ó" => "o", "ú" => "u", "ü" => "u");
@@ -238,10 +254,10 @@ if (!function_exists('nombreUsuario')) {
     }
 }
 
-/** 
- * Función que valida valores alfabéticos
- */
 if (!function_exists('alfa')) {
+    /**
+     * Función que valida valores alfabéticos
+     */
     function alfa($cadena)
     {
         // Función ereg() no soportada en php 5.3
@@ -250,10 +266,10 @@ if (!function_exists('alfa')) {
     }
 }
 
-/** 
- * Función que valida valores alfanuméricos
- */
 if (!function_exists('alfanum')) {
+    /**
+     * Función que valida valores alfanuméricos
+     */
     function alfanum($cadena)
     {
         //return(ereg("^[a-zA-Z0-9]+$",$cadena));
@@ -261,10 +277,10 @@ if (!function_exists('alfanum')) {
     }
 }
 
-/** 
- * Función que valida valores numéricos
- */
 if (!function_exists('num')) {
+    /**
+     * Función que valida valores numéricos
+     */
     function num($cadena)
     {
         //return(ereg("^[0-9]+$",$cadena));
@@ -272,10 +288,10 @@ if (!function_exists('num')) {
     }
 }
 
-/** 
- * Función que valida direcciones de correo
- */
 if (!function_exists('validaEmail')) {
+    /**
+     * Función que valida direcciones de correo
+     */
     function validaEmail($correo)
     {
         //return (ereg('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
@@ -287,10 +303,10 @@ if (!function_exists('validaEmail')) {
     }
 }
 
-/** 
- * Función que valida fecha con formato AAAA-MM-DD
- */
 if (!function_exists('validaFecha')) {
+    /**
+     * Función que valida fecha con formato AAAA-MM-DD
+     */
     function validaFecha($cadena)
     {
         //$patron="^([[:digit:]]{4})-([[:digit:]]{1,2})-([[:digit:]]{1,2})$";
@@ -316,14 +332,14 @@ if (!function_exists('validaFecha')) {
     }
 }
 
-/** 
- * función que agrega comillas a cadenas de caracteres
- */
 if (!function_exists('comillas')) {
-    function comillas($valor)
+    /**
+     * función que agrega comillas a cadenas de caracteres
+     */
+    function comillas($valor): int|string
     {
         // Retirar las barras si es necesario
-        if (get_magic_quotes_gpc()) {
+        if (ini_get('magic_quotes_gpc') == 1) {
             $valor = stripslashes($valor);
         }
         // Colocar comillas si no es un entero
@@ -334,11 +350,11 @@ if (!function_exists('comillas')) {
     }
 }
 
-/**
- *  Obtener la fecha actual del sistema en el formato yyyy-mm-dd
- */
 if (!function_exists('fechaActual')) {
-    function fechaActual()
+    /**
+     *  Obtener la fecha actual del sistema en el formato yyyy-mm-dd
+     */
+    function fechaActual(): string
     {
         foreach (getdate() as $nombre => $valor) {
             $arreglo[$nombre] = $valor;
@@ -348,11 +364,11 @@ if (!function_exists('fechaActual')) {
     }
 }
 
-/** 
- * Función que controla el acceso autorizado de las páginas
- * y retorna el -id- de acuerdo al tipo de usuario.
- */
 if (!function_exists('restringe')) {
+    /**
+     * Función que controla el acceso autorizado de las páginas
+     * y retorna el -id- de acuerdo al tipo de usuario.
+     */
     function restringe($tipo_user)
     {
         require_once("login/autenticacion.php");
@@ -395,11 +411,11 @@ if (!function_exists('restringe')) {
     }
 }
 
-/**
- * Función que retorna los datos del usuario recibiendo como parámetro
- * el id_usuario
- */
 if (!function_exists('datosUsuario')) {
+    /**
+     * Función que retorna los datos del usuario recibiendo como parámetro
+     * el id_usuario
+     */
     function datos_usuario($id_usuario)
     {
         global $db;
@@ -424,12 +440,11 @@ if (!function_exists('datosUsuario')) {
     }
 }
 
-
-/**
- * Función que retorna la edad recibiendo como parámetro la f_nacimiento
- * en formato AAAA-MM-DD
- */
 if (!function_exists('numYears')) {
+    /**
+     * Función que retorna la edad recibiendo como parámetro la f_nacimiento
+     * en formato AAAA-MM-DD
+     */
     function numYears($fecha)
     {
         /**
@@ -459,10 +474,10 @@ if (!function_exists('numYears')) {
     }
 }
 
-/**
- * Función para redimensionar imágenes
- */
 if (!function_exists('escala')) {
+    /**
+     * Función para redimensionar imágenes
+     */
     function escala($url, $base)
     {
         $datos = getimagesize($url) or die("Imagen no válida");

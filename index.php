@@ -11,16 +11,13 @@ $db = conectarse();
 $sql = "SELECT * FROM general";
 $estado = $db->query($sql);
 $leer = $estado->fetch_assoc();
-// echo "<pre>";
-// var_dump($leer);
-// echo "</pre>";
 
 if ($leer['activo'] == "S") {
     if (!isset($_POST['envia_consulta'])) {
         include_once("ingresa.phtml");
     } else {
         /**
-         * VALIDACION DE INGRESO AL SISTEMA
+         * VALIDACIÓN DE INGRESO AL SISTEMA
          */
         if ($_POST['documento'] != "") {
             $DocEst = $_POST['documento'];
@@ -54,27 +51,13 @@ if ($leer['activo'] == "S") {
         }
 
         /**
-         * Funcion para guardar los datos de control
-         */
-        function LogControl($faccion2, $idest2)
-        {
-            require_once("conexionBD.php");
-            $link = conectarse();
-            $ffecha = date("Y-m-d");
-            $fhora = date("G:i:s");
-            $fip = $_SERVER['REMOTE_ADDR'];
-            $cons_sql  = sprintf("INSERT INTO control(c_fecha,c_hora,c_ip,c_accion,c_idest) VALUES(%s,%s,%s,%s,%d)", comillas($ffecha), comillas($fhora), comillas($fip), comillas($faccion2), $idest2);
-            $link->query($cons_sql);
-        }
-
-        /**
          * VALIDAMOS QUE EL ESTUDIANTE NO HAYA VOTADO
          */
-        $sql = sprintf("select id_estudiante from voto, estudiantes where documento=%s and id_estudiante=estudiantes.id", comillas($DocEst));
+        $sql = sprintf("SELECT id_estudiante FROM voto, estudiantes WHERE documento=%s AND id_estudiante=estudiantes.id", comillas($DocEst));
         $resp2 = $db->query($sql);
         if ($row2 = $resp2->fetch_array(MYSQLI_ASSOC)) {
-            $faccion = "Intento-IngresoDuplicado";
-            LogControl($faccion, $row2['id_estudiante']);
+            $action = "Intento-IngresoDuplicado";
+            LogControl($db, $action, $row2['id_estudiante']);
             include_once("encabezado.phtml");
             print "<strong>No puede ingresar</strong><br>Su voto ya está registrado en el sistema.<br>";
             print "<br><strong><a href='javascript:history.go(-1)'>Volver al formulario</a></strong></div></body></html>";
@@ -98,8 +81,8 @@ if ($leer['activo'] == "S") {
             echo '</head>';
             echo '<body>';
             echo '<div align="center">';
-            $faccion = "Ingreso-" . $DocEst;
-            LogControl($faccion, $row['id']);
+            $action = "Ingreso-" . $DocEst;
+            LogControl($db, $action, $row['id']);
             echo '<div class="nombrevota"; font-weight: bold;">ESTUDIANTE: ' . $row['nombres'] . ' ' . $row['apellidos'] . '</div>';
             echo '<img src="iconos/EscudoColombia.png" style="display:scroll;position:fixed; top:35px;left:150px;" width="110" alt="Escudo de Colombia" />';
             echo '<img src="iconos/EscudoColegio.png" style="display:scroll;position:fixed; top:35px;right:150px;" width="130" alt="Escudo de Colegio" /><br>';
@@ -189,8 +172,8 @@ if ($leer['activo'] == "S") {
         } else {
             setcookie("DataVota", "", time() - 3600);
             include_once("encabezado.phtml");
-            $faccion = "IngresoFallido-" . $DocEst;
-            LogControl($faccion, 0);
+            $action = "IngresoFallido-" . $DocEst;
+            LogControl($db, $action, 0);
             echo '<table>';
             echo '<tr><td class="cen" colspan="2"><strong>El documento escrito no está registrado en el sistema<br><br>';
             print "<strong><a href='javascript:history.go(-1)'>Volver a intentarlo</a></strong></td></tr>";
