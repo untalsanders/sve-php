@@ -1,0 +1,12 @@
+# Site settings
+title: Sistema de Elección Popular
+email: ing.sanders@gmail.com
+description: SEP es un sistema de elección popular pensado para el sufragio en instituciones educativas.
+baseurl: /sistema-eleccion-popular
+url: https://www.sandersgutierrez.com
+
+twitter_username: sanderselnegro
+github_username:  sandersgutierrez
+
+# Build settings
+markdown: kramdown
