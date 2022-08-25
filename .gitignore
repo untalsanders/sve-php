@@ -1,34 +1,30 @@
-### Composer ###
-composer.phar
-/vendor/
+### Jekyll ###
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
 
-### Linux ###
-*~
+### PHP and Jekyll ###
+vendor
 
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
+### Node ###
+node_modules
 
 ### VisualStudioCode ###
 .vscode/
 
-### Intellij IDEA ###
-.idea/
-
-### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
 
 ### DotEnv ###
 .env
 
-### NPM | NODE ###
-/node_modules/
+### PHP ###
+composer.phar
