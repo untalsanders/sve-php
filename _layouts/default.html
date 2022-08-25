@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+        <meta name="application-name" content="{{ site.title }}">
+        {% if page.title %}
+        <title>{{ page.title }} | {{ site.title }}</title>
+        {% else %}
+        <title>{{ site.title }} | {{ site.title }}</title>
+        {% endif%}
+    </head>
+
+    <body>
+        <main class="main">
+            {{ content }}
+        </main>
+    </body>
+</html>
