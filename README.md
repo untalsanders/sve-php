@@ -1,11 +1,11 @@
-﻿# ⚖ Sistema de Votación Estudiantil ⚖
+﻿# :fire: Sistema de Votación Estudiantil :fire:
 
-## ✅ Requerimientos
+## :white_check_mark: Requerimientos
 
 - PHP v8.*
 - Composer v2.
 
-## 🏁 Empezar
+## :checkered_flag: Empezar
 
  1. Instalar Composer.
 
@@ -33,11 +33,7 @@
     php composer.phar run dev
     ```
 
-## 👨🏿‍💻 Autor
-
-- [Sanders Gutiérrez](https://www.linkedin.com/in/sandersgutierrez) - Ingeniero de Software
-
-## 🔐 Licencia
+## :closed_lock_with_key: Licencia
 
 Este proyecto es un software de código abierto con licencia [MIT](LICENSE).
 
