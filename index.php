@@ -1,18 +1,16 @@
 <?php
 
+phpinfo();
+die('Exitoso');
+
 require "funciones.php";
-require "conexionBD.php";
+require 'conexionBD.php';
+require 'services.php';
 
 $db = conectarse();
+$leer = datosInstitucion();
 
-/**
- * Verificar si el sistema se encuentra activo
- */
-$sql = "SELECT * FROM general";
-$estado = $db->query($sql);
-$leer = $estado->fetch_assoc();
-
-if ($leer['activo'] == "S") {
+if (isSystemActive()) {
     if (!isset($_POST['envia_consulta'])) {
         include_once("ingresa.phtml");
     } else {
@@ -31,7 +29,7 @@ if ($leer['activo'] == "S") {
         /**
          * Se valida la contraseña del estudiante si el sistema la solicita
          */
-        if ($leer['clave'] == "S") {
+        if (usePassword()) {
             if ($_POST['contra'] != "") {
                 $ContraEst = md5($_POST['contra']);
             } else {
@@ -182,8 +180,6 @@ if ($leer['activo'] == "S") {
     }
 } else {
     include_once("encabezado.phtml");
-    print("<strong>EL SISTEMA DE VOTACIÓN ESTA INACTIVO</strong><br>");
-    print("(Comuníquese con el administrador del sistema)</div></body></html>");
 }
 
 $db->close();

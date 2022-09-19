@@ -45,6 +45,7 @@
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "dev": "php -S localhost:8000 -t public",
+        "debug": "php -S localhost:8000 -t public -c etc/infrastructure/php/conf.d/xdebug.ini",
         "test": "phpunit --colors=always --testdox tests/"
     }
 }
