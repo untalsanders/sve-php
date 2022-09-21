@@ -1,8 +1,5 @@
 <?php
 
-phpinfo();
-die('Exitoso');
-
 require "funciones.php";
 require 'conexionBD.php';
 require 'services.php';
