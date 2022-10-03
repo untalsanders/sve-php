@@ -1,0 +1,14 @@
+**/.git
+**/node_modules
+**/vendor
+**/public
+
+### Composer
+composer.json
+composer.lock
+
+### vscode
+.vscode/
+
+### Intellij IDEA
+.idea/
