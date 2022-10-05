@@ -2,7 +2,7 @@
 
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { Footer, Header, Layout, Main } from './components/index'
+import { Footer, Header, Layout, Main } from './components'
 import './styles.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

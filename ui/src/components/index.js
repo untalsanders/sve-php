@@ -1,5 +1,5 @@
-export { Footer } from './Footer'
-export { Header } from './Header'
-export { Layout } from './Layout'
-export { Main } from './Main'
+export * from './Footer'
+export * from './Header'
+export * from './Layout'
+export * from './Main'
 
