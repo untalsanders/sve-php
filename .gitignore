@@ -1,15 +1,6 @@
-# File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-
-# Created by https://www.gitignore.io/api/linux,visualstudiocode,composer
-# Edit at https://www.gitignore.io/?templates=linux,visualstudiocode,composer
-
 ### Composer ###
 composer.phar
-/vendor/
-
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+vendor/
 
 ### Linux ###
 *~
@@ -27,11 +18,7 @@ composer.phar
 .nfs*
 
 ### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/
 
 ### Intellij IDEA ###
 .idea/
@@ -40,15 +27,11 @@ composer.phar
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/linux,visualstudiocode,composer
-
-# Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
-
 ### DotEnv ###
 .env
 
 ### NPM | NODE ###
-/node_modules/
+node_modules/
 
 ### Public Assets ###
-/public/assets/
+public/assets/
