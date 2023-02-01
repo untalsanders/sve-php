@@ -36,4 +36,3 @@
 ## :closed_lock_with_key: Licencia
 
 Este proyecto es un software de código abierto con licencia [MIT](LICENSE).
-

@@ -27,9 +27,9 @@
         "watch": "webpack -d --watch"
     },
     "devDependencies": {
-        "css-loader": "^6.6.0",
-        "style-loader": "^1.2.1",
-        "webpack": "^5.39.0",
-        "webpack-cli": "^3.3.12"
+        "css-loader": "6.7.3",
+        "style-loader": "3.3.1",
+        "webpack": "5.75.0",
+        "webpack-cli": "5.0.1"
     }
 }
