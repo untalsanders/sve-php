@@ -1,7 +1,15 @@
 <?php
-//**** Eliminar cookie de sesión *****
+
+declare(strict_types=1);
+
+/**
+ * Eliminar cookie de sesiÃ³n
+ */
 setcookie("VotaDatAdmin", "", time()-3600);
 
-//**** Redireccionar página web *****
-header("Location: index.php");
+/**
+ * Redireccionar pÃ¡gina web
+ */
+header("Location: /administrador");
+
 exit();

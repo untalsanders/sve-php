@@ -1,8 +1,48 @@
 <?php
 
+declare(strict_types=1);
+
+require 'conexionBD.php';
+
+$db = conectarse();
+
+function execQuery(string $sql): array {
+    global $db;
+    $queryResult = $db->query($sql);
+    $data = $queryResult->fetch_assoc();
+    return $data;
+}
+
+function isSystemActive(): bool {
+    $data = execQuery("SELECT * FROM institucion");
+    return $data['activo'] == 'S' ? true : false;
+}
+
+function usePassword(): bool {
+    $data = execQuery("SELECT * FROM institucion");
+    return $data['clave'] == 'S' ? true : false;
+}
+
+if (!function_exists('logControl')) {
+    /**
+     * Función para guardar los datos de control
+     */
+    function logControl($action, $dest): void
+    {
+        global $db;
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        $stmt = $db->prepare("INSERT INTO control (c_fecha, c_hora, c_ip, c_accion, c_idest) VALUES (?, ?, ?, ?, ?);");
+        $fecha = date("Y-m-d");
+        $hora = date("H:i:s");
+        $ip = $_SERVER["REMOTE_ADDR"];
+        $stmt->bind_param("ssssi", $fecha, $hora, $ip, $action, $dest);
+        $stmt->execute();
+    }
+}
+
 /**
  * Helpers para funciones útiles disponibles para todo el sistema
- * 
+ *
  * @author Sanders Gutiérrez <ing.sanders@gmail.com>
  * @version 1.0
  */
@@ -68,22 +108,6 @@ $form_campos = array(
 );
 
 extract($form_campos);
-
-if (!function_exists('logControl')) {
-    /**
-     * Función para guardar los datos de control
-     */
-    function logControl($conn, $action, $dest): void
-    {
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-        $stmt = $conn->prepare("INSERT INTO control (c_fecha, c_hora, c_ip, c_accion, c_idest) VALUES (?, ?, ?, ?, ?);");
-        $fecha = date("Y-m-d");
-        $hora = date("H:i:s");
-        $ip = $_SERVER["REMOTE_ADDR"];
-        $stmt->bind_param("ssssi", $fecha, $hora, $ip, $action, $dest);
-        $stmt->execute();
-    }
-}
 
 if (!function_exists('valida')) {
     /**

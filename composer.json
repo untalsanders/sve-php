@@ -20,7 +20,7 @@
         "slim/twig-view": "3.3.0",
         "php-di/php-di": "6.4.0",
         "doctrine/dbal": "2.13.9",
-        "laminas/laminas-diactoros": "2.14.0",
+        "laminas/laminas-diactoros": "2.24.0",
         "vlucas/phpdotenv": "4.2.2"
     },
     "require-dev": {

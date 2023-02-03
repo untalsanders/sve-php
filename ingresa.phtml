@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EducoVota - <?php print($leer['institucion'] ?? 'Institución'); ?></title>
+    <title>EducoVota - <?php print($institución['nombre'] ?? 'Nombre de la institución'); ?></title>
     <link href="style-ingresar.css" rel="stylesheet">
 </head>
 <body>
@@ -12,12 +12,12 @@
         <section class="form-login">
             <img src="iconos/EscudoColegio.png" alt="Escudo de Colegio">
             <h2>
-                <span><?php print($leer['institucion']); ?></span>
-                <span><?php print($leer['descripcion']); ?></span>
+                <span><?php print($institución['nombre']); ?></span>
+                <span><?php print($institución['descripcion']); ?></span>
             </h2>
             <form id="consulta" action="index.php" method="post">
                 <input type="text" name="documento" placeholder="Documento del estudiante" title="Escriba el documento del estudiante">
-                <?php if ($leer['clave'] == "S") : ?>
+                <?php if ($institución['clave'] == "S") : ?>
                     <input type="password" name="contra" placeholder="Contraseña" title="Escriba la contraseña de acceso">
                 <?php endif; ?>
                 <input type="submit" name="envia_consulta" value="Ingresar" title="Ingresar al sistema">
