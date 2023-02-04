@@ -34,4 +34,9 @@ vendor/
 node_modules/
 
 ### Public Assets ###
-public/assets/
+public/**/*.js
+public/**/*.css
+
+### Logs ###
+logs/
+*.log

@@ -1,0 +1,45 @@
+{% extends "templates/app.twig" %}
+
+{% block title %}
+    {{ pageTitle | capitalize }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <section class="form-login">
+            <img src="assets/images/escudo-colegio.png" alt="Escudo de Colegio" width="250">
+            <h2>
+                <span>{{ institucion.nombre }}</span>
+                <span>{{ institucion.descripcion }}</span>
+            </h2>
+            <form id="consulta" action="/tarjeton" method="post">
+                <input type="text" name="documento" placeholder="Documento del estudiante" title="Escriba el documento del estudiante">
+                {% if institucion.clave == "S" %}
+                    <input type="password" name="contra" placeholder="Contraseña" title="Escriba la contraseña de acceso">
+                {% endif %}
+                <input type="submit" name="envia_consulta" value="Ingresar" title="Ingresar al sistema">
+            </form>
+        </section>
+        <section class="rules">
+            <img src="assets/images/escudo-colombia.png" alt="Escudo de Colegio" width="250">
+            <h3>Para realizar el proceso de votación siga los siguientes pasos:</h3>
+            <ul>
+                <li>
+                    <img src="assets/icons/n1.png" alt="#1">
+                    <span>Ingrese al sistema de votación, escribiendo su número de documento (costado derecho de esta página).</span>
+                </li>
+                <li>
+                    <img src="assets/icons/n2.png" alt="#2">
+                    <span>Al ingresar al sistema encontrará el tarjetón electoral para votar por sus representantes preferidos.
+                    Seleccione los de su preferencia dando clic sobre la foto.</span>
+                </li>
+                <li>
+                    <img src="assets/icons/n3.png" alt="#3">
+                    <span>Para registrar su voto de clic en el botón<strong>votar</strong>.</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    {% include "partials/footer.twig" %}
+{% endblock %}

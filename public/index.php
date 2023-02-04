@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /**
- * Sistema Electoral Estudiantil
+ * Sistema de Votación Electrónica
  *
- * @package  ses
+ * @package  sve
  * @author   Sanders Gutiérrez <ing.sanders@gmail.com>
  */
 
@@ -28,7 +28,7 @@ if (!defined('DS')) {
  * Root directory of application
  */
 if (!defined('APP_ROOT')) {
-    define('APP_ROOT', dirname($_SERVER['DOCUMENT_ROOT'], 1));
+    define('APP_ROOT', dirname($_SERVER['DOCUMENT_ROOT'], 1) . '/src');
 }
 
 /**
@@ -36,7 +36,4 @@ if (!defined('APP_ROOT')) {
  */
 $app = require APP_ROOT . '/bootstrap/app.php';
 
-/**
- * Run Application
- */
 $app->run();

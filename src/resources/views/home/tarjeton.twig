@@ -1,0 +1,33 @@
+{% extends "templates/app.twig" %}
+
+{% block title %}
+    {{ 'Tarjetón' | capitalize }}
+{% endblock %}
+
+{% block content %}
+    <h1>Estudiante: {{ estudiante.nombres }} {{ estudiante.apellidos }}</h1>
+    <h2>{{ institucion.nombre | upper }}</h2>
+    <span>{{ institucion.descripcion | upper }}</span>
+    <form action="" method="post">
+        <h3>{{ "Tarjetón Electoral" | upper }}</h3>
+        <ul>
+            {% for categoria in categorias %}
+                <li>
+                    <span>{{ categoria.descripcion }}</span>
+                    <ol>
+                        {% for candidato in candidatos %}
+                            {% if categoria.id == candidato.categoria_id  %}
+                                <li>
+                                    <input type="radio" name="candidato_a_{{ categoria.nombre | lower }}">
+                                    <span>{{ candidato.nombres | capitalize }} {{ candidato.apellidos | capitalize }}</span>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+
+    {% include "partials/footer.twig" %}
+{% endblock %}

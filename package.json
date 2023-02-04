@@ -1,33 +1,37 @@
 {
-    "name": "sistema-votacion-estudiantil",
+    "name": "sistema-votacion-electronica",
     "version": "0.1.0",
-    "description": "Sistema de Votación Estudiantil",
+    "description": "Sistema de Votación Electrónica",
     "keywords": [
         "sistema",
         "votación",
-        "estudiantil"
+        "electrónica"
     ],
     "license": "MIT",
     "private": true,
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/sandersgutierrez/sistema-votacion-estudiantil.git"
+        "url": "git+https://github.com/sandersgutierrez/sve.git"
     },
-    "author": "Sanders Gutiérrez <ing.sanders@gmail.com (https://www.sandersgutierrez.com)>",
-    "homepage": "https://github.com/sandersgutierrez/sistema-votacion-estudiantil#readme",
+    "author": "Sanders Gutiérrez <ing.sanders@gmail.com (https://sandersgutierrez.github.io)>",
+    "homepage": "https://github.com/sandersgutierrez/sve#readme",
     "bugs": {
-        "url": "https://github.com/sandersgutierrez/sistema-votacion-estudiantil/issues"
+        "url": "https://github.com/sandersgutierrez/sve/issues"
     },
     "directories": {
         "test": "tests"
     },
     "scripts": {
-        "build": "webpack -p --display-error-detail --progress --colors",
-        "build-dev": "webpack --display-error-detail --progress --colors",
-        "watch": "webpack -d --watch"
+        "build": "webpack --mode production",
+        "watch": "webpack --watch --mode development",
+        "format": "prettier --write ."
     },
     "devDependencies": {
+        "@babel/core": "7.20.12",
+        "@babel/preset-env": "7.20.2",
+        "babel-loader": "9.1.2",
         "css-loader": "6.7.3",
+        "prettier": "2.8.3",
         "style-loader": "3.3.1",
         "webpack": "5.75.0",
         "webpack-cli": "5.0.1"

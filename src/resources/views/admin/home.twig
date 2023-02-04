@@ -1,0 +1,97 @@
+{% extends "templates/app.twig" %}
+
+{% block title %}
+    {{ 'Admin' | capitalize }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div align="center">
+            <h2>Bienvenido(a): {{ administrador.nombres }} {{ administrador.apellidos }}</h2>
+            <table style="font-weight:bold" ;>
+                <thead>
+                    <tr>
+                        <th>MENÚ DE ADMINISTRACIÓN</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <a href="#" title="Consultar resultados de votación">
+                            <img src="assets/icons/box.png" border="0" alt="Folder">
+                            Resultados de votación
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" title="Consulta de estudiantes por grado">
+                            <img src="assets/icons/folder.png" border="0" alt="Folder">
+                            Consulta de estudiantes por grado
+                        </a>
+                    </td>
+                </tr>
+                {% if administrador.id == 1 %}
+                    <tr>
+                        <td>
+                            <a href="#" title="Candidatos">
+                                <img src="assets/icons/datos.png" border="0" alt="Folder">
+                                Lista de Candidatos
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" title="Importar datos">
+                                <img src="assets/icons/book.png" border="0" alt="Datos">
+                                Importar datos estudiantes
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" title="Administradores del sistema">
+                                <img src="assets/icons/users.png" border="0" alt="Datos">
+                                Administradores del sistema
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" title="Configuración general">
+                                <img src="assets/icons/hoja.png" border="0" alt="Config">
+                                Configuración general
+                            </a>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <td>
+                        <a href="#" title="Bitácora del sistema">
+                            <img src="assets/icons/find.png" border="0" alt="bitácora">
+                            Bitácora del sistema
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#" title="Cambiar contraseña de acceso">
+                            <img src="assets/icons/clave.png" border="0" alt="Clave">
+                            Cambiar contraseña
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/salir" title="Salir del sistema">
+                            <img src="assets/icons/salir.png" border="0" alt="Salir">
+                            Salir del sistema
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    {% include "partials/footer.twig" %}
+{% endblock %}
+
