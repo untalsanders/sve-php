@@ -29,6 +29,7 @@
     "devDependencies": {
         "@babel/core": "7.20.12",
         "@babel/preset-env": "7.20.2",
+        "@faker-js/faker": "7.6.0",
         "babel-loader": "9.1.2",
         "css-loader": "6.7.3",
         "prettier": "2.8.3",

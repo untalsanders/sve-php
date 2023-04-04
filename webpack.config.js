@@ -3,7 +3,7 @@
 const { resolve } = require('path')
 
 module.exports = {
-    entry: './src/resources/assets/js/app.js',
+    entry: './resources/assets/js/app.js',
     output: {
         path: resolve(__dirname, 'public/assets/js'),
         filename: 'bundle.js',

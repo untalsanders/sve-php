@@ -24,7 +24,7 @@ class Database
      */
     public function connect()
     {
-        Dotenv::createImmutable(APP_ROOT . '/../')->load();
+        Dotenv::createImmutable(APP_ROOT)->load();
         $config = new Configuration();
 
         $connectionParams = array(

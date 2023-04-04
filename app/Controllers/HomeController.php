@@ -9,7 +9,7 @@ class HomeController extends AbstractController
     public function init($request, $response, array $argss)
     {
         $sql = "SELECT * FROM institucion WHERE activo = ?";
-        $stmt = $this->container->get('db')->prepare($sql);
+        $stmt = $this->db()->prepare($sql);
         $stmt->bindValue(1, 'S');
         $stmt->execute();
 
@@ -24,20 +24,19 @@ class HomeController extends AbstractController
     {
         // Datos de la institucion
         $queryInstitucion = "SELECT * FROM institucion WHERE activo = ?";
-        $institucion = $this->container->get('db')->fetchAssoc($queryInstitucion, ["S"]);
+        $institucion = $this->db()->fetchAssoc($queryInstitucion, ["S"]);
 
         // Datos del estudiante
         $queryEstudiante = "SELECT * FROM estudiante WHERE documento = ?";
-        $estudiante = $this->container->get('db')->fetchAssoc($queryEstudiante, [$request->getParsedBody()['documento']]);
+        $estudiante = $this->db()->fetchAssoc($queryEstudiante, [$request->getParsedBody()['documento']]);
+
+        // Datos de las categorías
+        $queryCategoria = "SELECT * FROM categoria";
+        $categorias = $this->db()->query($queryCategoria);
 
         // Datos de los candidatos
-        $queryCategoria = "SELECT * FROM categoria";
-        $categorias = $this->container->get('db')->query($queryCategoria);
-
         $queryCandidatos = "SELECT t2.nombres, t2.apellidos FROM candidato AS t1 LEFT JOIN estudiante as t2 ON t1.estudiante_id = t2.id";
-        $stmt = $this->container->get('db')->prepare($queryCandidatos);
-        $stmt->execute();
-        $candidatos = $stmt->fetchAll();
+        $candidatos = $this->db()->query($queryCandidatos);
 
         return $this->render($response, "home/tarjeton.twig", [
             "pageTitle"   => 'Tarjetón',

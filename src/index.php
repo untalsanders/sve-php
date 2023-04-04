@@ -8,7 +8,7 @@ require 'conexionBD.php';
 $db = conectarse();
 $institución = execQuery('SELECT * FROM institucion');
 
-if (isSystemActive()) {
+if ($institución['activo'] == 'S') {
     if (!isset($_POST['envia_consulta'])) {
         include_once("ingresa.phtml");
     } else {
@@ -27,7 +27,7 @@ if (isSystemActive()) {
         /**
          * Se valida la contraseña del estudiante si el sistema la solicita
          */
-        if (usePassword()) {
+        if ($institución['clave'] == 'S') {
             if ($_POST['contra'] != "") {
                 $ContraEst = md5($_POST['contra']);
             } else {
@@ -175,5 +175,3 @@ if (isSystemActive()) {
 } else {
     include_once("encabezado.phtml");
 }
-
-$db->close();

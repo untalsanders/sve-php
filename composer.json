@@ -13,6 +13,8 @@
     "minimum-stability": "beta",
     "require": {
         "php": "8.*",
+        "ext-curl": "*",
+        "ext-json": "*",
         "ext-mysqli": "*",
         "ext-pdo": "*",
         "doctrine/dbal": "2.13.9",
@@ -33,10 +35,10 @@
     },
     "autoload": {
         "psr-4": {
-            "SVE\\": "src/app"
+            "SVE\\": "app"
         },
         "files": [
-            "src/funciones.php"
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {

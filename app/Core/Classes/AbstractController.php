@@ -21,4 +21,9 @@ abstract class AbstractController
     public function render($response, string $template, array $args = []) {
         return $this->container->get('view')->render($response, $template, $args);
     }
+
+    public function db()
+    {
+        return $this->container->get('db');
+    }
 }

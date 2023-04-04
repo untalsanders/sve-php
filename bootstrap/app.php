@@ -9,23 +9,17 @@ use SVE\Core\Classes\Database;
 use Dotenv\Dotenv;
 use Slim\Views\TwigMiddleware;
 
-require APP_ROOT . '/../vendor/autoload.php';
-
-// echo "<pre>";
-// print_r(get_required_files());
-// echo "</pre>";
-
-// exit();
+require APP_ROOT . '/vendor/autoload.php';
 
 $container = new Container();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 /* Display Errors */
-$app->addErrorMiddleware(true, false, false);
+$app->addErrorMiddleware(true, true, true);
 
 $container->set('config', function () {
-    return Dotenv::createImmutable(APP_ROOT . '/../')->load();
+    return Dotenv::createImmutable(APP_ROOT)->load();
 });
 
 $container->set('db', function () {
