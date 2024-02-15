@@ -9,6 +9,11 @@ module.exports = {
         filename: 'bundle.js',
         clean: true,
     },
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, './resources/assets/'),
+        }
+    },
     module: {
         rules: [
             {
