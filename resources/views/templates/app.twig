@@ -2,10 +2,7 @@
     <head>
         <meta charset="utf-8" />
         <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-        <meta
-            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
-            name="viewport"
-        />
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport" />
         <title>{% block title %}{% endblock %} | SVE</title>
         <link
             crossorigin="anonymous"
@@ -13,10 +10,12 @@
             integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI="
             rel="stylesheet"
         />
+        {% block css %}{% endblock %}
     </head>
     <body>
         {% block content %}{% endblock %}
 
         <script src="assets/js/bundle.js"></script>
+        {% block js %}{% endblock %}
     </body>
 </html>

@@ -1,7 +1,6 @@
 'use strict'
 
-import '@/css/styles.css'
-import '@/css/admin-styles.css'
+import '@/css/main.css'
 
 import { faker } from '@faker-js/faker'
 

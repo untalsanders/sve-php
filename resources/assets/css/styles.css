@@ -1,34 +1,3 @@
-:root {
-    --primary-color: #00a65a;
-    --secondary-color: #f39c12;
-    --tertiary-color: #f56954;
-    --quaternary-color: #00c0ef;
-    --quinary-color: #3c8dbc;
-    --senary-color: #d2d6de;
-    --septenary-color: #ff851b;
-    --octonary-color: #0073b7;
-    --nonary-color: #39cccc;
-    --white-color: #fff;
-    --black-color: #000;
-    --main-color: #333;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    min-height: 100vh;
-    color: var(--main-color);
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
 
 body {
     font: normal normal 400 calc(15px + 0.390625vw) 'Open Sans', sans-serif;
@@ -42,7 +11,7 @@ footer {
     max-width: 100vw;
 }
 
-main.admin-home {
+main {
     display: grid;
     grid-template-columns: minmax(25%, min-content) 1fr;
     align-items: center;
@@ -137,11 +106,4 @@ main .rules ul li {
 
 .formulario form {
     border: 1px solid #ccc;
-}
-
-footer {
-    background-color: var(--black-color);
-    color: var(--white-color);
-    text-align: center;
-    padding: 1.2rem;
 }
