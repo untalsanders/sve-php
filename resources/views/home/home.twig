@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block content %}
-    <main>
+    <main class="user-home">
         <section class="form-login">
             <img src="assets/images/escudo-colegio.png" alt="Escudo de Colegio" width="250">
             <h2>
-                <span>{{ institucion.nombre }}</span>
-                <span>{{ institucion.descripcion }}</span>
+                <span>{{ institute.institucion }}</span>
+                <span>{{ institute.descripcion }}</span>
             </h2>
-            <form id="consulta" action="/tarjeton" method="post">
+            <form id="consulta" action="/card" method="post">
                 <input type="text" name="documento" placeholder="Documento del estudiante" title="Escriba el documento del estudiante">
-                {% if institucion.clave == "S" %}
+                {% if institute.clave == "S" %}
                     <input type="password" name="contra" placeholder="Contraseña" title="Escriba la contraseña de acceso">
                 {% endif %}
                 <input type="submit" name="envia_consulta" value="Ingresar" title="Ingresar al sistema">

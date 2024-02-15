@@ -10,7 +10,7 @@
     --nonary-color: #39cccc;
     --white-color: #fff;
     --black-color: #000;
-    --main-color: #444;
+    --main-color: #333;
 }
 
 * {
@@ -21,19 +21,19 @@
 
 html,
 body {
-    height: 100%;
+    min-height: 100vh;
     color: var(--main-color);
 }
 
 a {
-    color: var(--secondary-color);
+    color: inherit;
     text-decoration: none;
 }
 
 body {
-    font: normal normal normal 16px/1.5 'Open Sans', sans-serif;
+    font: normal normal 400 calc(15px + 0.390625vw) 'Open Sans', sans-serif;
     display: grid;
-    grid-template-rows: auto max-content;
+    grid-template-rows: auto min-content;
 }
 
 main,
@@ -42,9 +42,9 @@ footer {
     max-width: 100vw;
 }
 
-main {
+main.admin-home {
     display: grid;
-    grid-template-columns: minmax(30%, auto) auto;
+    grid-template-columns: minmax(25%, min-content) 1fr;
     align-items: center;
 }
 
@@ -77,19 +77,20 @@ main .form-login form input {
     padding: 1rem;
     border-radius: 0.25rem;
     margin-bottom: 1rem;
-    border: 1px solid var(--color-senary);
+    border: 1px solid var(--senary-color);
 }
 
 main .form-login form input[type='submit'] {
     border: 1px solid var(--secondary-color);
     background-color: var(--secondary-color);
-    color: var(--color-white);
+    color: var(--white-color);
     cursor: pointer;
     font-weight: bold;
 }
 
 main .form-login h2 {
     text-align: center;
+    width: 100%;
 }
 
 main .form-login h2 > *:not(:first-child) {
@@ -139,8 +140,8 @@ main .rules ul li {
 }
 
 footer {
-    background-color: var(--color-black);
-    color: var(--color-white);
+    background-color: var(--black-color);
+    color: var(--white-color);
     text-align: center;
     padding: 1.2rem;
 }

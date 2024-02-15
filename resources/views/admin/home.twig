@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <main>
-        <div align="center">
-            <h2>Bienvenido(a): {{ administrador.nombres }} {{ administrador.apellidos }}</h2>
-            <table style="font-weight:bold" ;>
+    <main class="admin-home">
+        <div>
+            <h2>Bienvenido(a): {{ admin.nombres }} {{ admin.apellidos }}</h2>
+            <table>
                 <thead>
                     <tr>
                         <th>MENÚ DE ADMINISTRACIÓN</th>
@@ -17,7 +17,7 @@
                 <tr>
                     <td>
                         <a href="#" title="Consultar resultados de votación">
-                            <img src="assets/icons/box.png" border="0" alt="Folder">
+                            <img src="assets/icons/box.png" alt="Folder">
                             Resultados de votación
                         </a>
                     </td>
@@ -25,7 +25,7 @@
                 <tr>
                     <td>
                         <a href="#" title="Consulta de estudiantes por grado">
-                            <img src="assets/icons/folder.png" border="0" alt="Folder">
+                            <img src="assets/icons/folder.png" alt="Folder">
                             Consulta de estudiantes por grado
                         </a>
                     </td>
@@ -34,7 +34,7 @@
                     <tr>
                         <td>
                             <a href="#" title="Candidatos">
-                                <img src="assets/icons/datos.png" border="0" alt="Folder">
+                                <img src="assets/icons/datos.png" alt="Folder">
                                 Lista de Candidatos
                             </a>
                         </td>
@@ -42,7 +42,7 @@
                     <tr>
                         <td>
                             <a href="#" title="Importar datos">
-                                <img src="assets/icons/book.png" border="0" alt="Datos">
+                                <img src="assets/icons/book.png" alt="Datos">
                                 Importar datos estudiantes
                             </a>
                         </td>
@@ -50,7 +50,7 @@
                     <tr>
                         <td>
                             <a href="#" title="Administradores del sistema">
-                                <img src="assets/icons/users.png" border="0" alt="Datos">
+                                <img src="assets/icons/users.png" alt="Datos">
                                 Administradores del sistema
                             </a>
                         </td>
@@ -58,7 +58,7 @@
                     <tr>
                         <td>
                             <a href="#" title="Configuración general">
-                                <img src="assets/icons/hoja.png" border="0" alt="Config">
+                                <img src="assets/icons/hoja.png" alt="Config">
                                 Configuración general
                             </a>
                         </td>
@@ -67,7 +67,7 @@
                 <tr>
                     <td>
                         <a href="#" title="Bitácora del sistema">
-                            <img src="assets/icons/find.png" border="0" alt="bitácora">
+                            <img src="assets/icons/find.png" alt="bitácora">
                             Bitácora del sistema
                         </a>
                     </td>
@@ -75,15 +75,15 @@
                 <tr>
                     <td>
                         <a href="#" title="Cambiar contraseña de acceso">
-                            <img src="assets/icons/clave.png" border="0" alt="Clave">
+                            <img src="assets/icons/clave.png" alt="Clave">
                             Cambiar contraseña
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="/salir" title="Salir del sistema">
-                            <img src="assets/icons/salir.png" border="0" alt="Salir">
+                        <a href="/sign-out" title="Salir del sistema">
+                            <img src="assets/icons/salir.png" alt="Salir">
                             Salir del sistema
                         </a>
                     </td>

@@ -1,6 +1,6 @@
 {
     "name": "sandersgutierrez/sve",
-    "description": "Sistema de Votación Electrónica",
+    "description": "Electronic Electoral System",
     "type": "project",
     "homepage": "https://sgdev-sistema-votacion-electronica.herokuapp.com",
     "license": "MIT",
@@ -10,10 +10,11 @@
             "email": "ing.sanders@gmail.com"
         }
     ],
-    "minimum-stability": "beta",
+    "minimum-stability": "RC",
     "require": {
         "php": "8.*",
         "ext-curl": "*",
+        "ext-http": "*",
         "ext-json": "*",
         "ext-mysqli": "*",
         "ext-pdo": "*",
@@ -27,6 +28,7 @@
         "vlucas/phpdotenv": "4.2.2"
     },
     "require-dev": {
+        "ext-xdebug": "*",
         "phpunit/phpunit": "9.5.21"
     },
     "config": {
@@ -35,10 +37,10 @@
     },
     "autoload": {
         "psr-4": {
-            "SVE\\": "app"
+            "SVE\\": "apps"
         },
         "files": [
-            "app/helpers.php"
+            "apps/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -50,8 +52,8 @@
         "post-install-cmd": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "dev": "php -S localhost:8000 -t public",
-        "debug": "php -S localhost:8000 -t public -c etc/infrastructure/php/conf.d/xdebug.ini",
+        "dev": "php -S localhost:8000 -t public -c etc/infrastructure/php/php.ini",
+        "debug": "php -S localhost:8000 -t public -c etc/infrastructure/php/php.ini -c etc/infrastructure/php/conf.d/xdebug.ini",
         "test": "phpunit --colors=always --testdox tests/"
     }
 }

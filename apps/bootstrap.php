@@ -9,17 +9,12 @@ use SVE\Core\Classes\Database;
 use Dotenv\Dotenv;
 use Slim\Views\TwigMiddleware;
 
-require APP_ROOT . '/vendor/autoload.php';
+require ROOT_PATH . '/vendor/autoload.php';
 
 $container = new Container();
-AppFactory::setContainer($container);
-$app = AppFactory::create();
-
-/* Display Errors */
-$app->addErrorMiddleware(true, true, true);
 
 $container->set('config', function () {
-    return Dotenv::createImmutable(APP_ROOT)->load();
+    return Dotenv::createImmutable(ROOT_PATH)->load();
 });
 
 $container->set('db', function () {
@@ -27,12 +22,16 @@ $container->set('db', function () {
 });
 
 $container->set('view', function () {
-    return Twig::create(APP_ROOT . '/resources/views', ['cache' => false]);
+    return Twig::create(ROOT_PATH . '/resources/views', ['cache' => false]);
 });
 
+AppFactory::setContainer($container);
+$app = AppFactory::create();
+/* Display Errors */
+$app->addErrorMiddleware(true, true, true);
 $app->add(TwigMiddleware::createFromContainer($app));
 
-require APP_ROOT . '/routes/web.php';
+require ROOT_PATH . '/routes/web.php';
 
 return $app;
 

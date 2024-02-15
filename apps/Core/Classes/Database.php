@@ -2,29 +2,32 @@
 
 namespace SVE\Core\Classes;
 
-use SVE\Core\Traits\Singleton;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Exception;
+use SVE\Core\Traits\Singleton;
 use Dotenv\Dotenv;
 
 /**
- * Gestiona la conexión a la base de datos
+ * Manage the connection to the database
  */
 class Database
 {
     /**
-     * Provee la funcionalidad para el uso del Patŕon Singleton
+     * Provide the functionality to use the singleton pattern
      */
     use Singleton;
 
     /**
-     * Se conecta a la base de datos
+     * Connect to the database
      *
-     * @return object \Doctrine\DBAL\DriverManager
+     * @return Connection \Doctrine\DBAL\Connection
+     * @throws Exception
      */
-    public function connect()
+    public function connect(): Connection
     {
-        Dotenv::createImmutable(APP_ROOT)->load();
+        Dotenv::createImmutable(ROOT_PATH)->load();
         $config = new Configuration();
 
         $connectionParams = array(

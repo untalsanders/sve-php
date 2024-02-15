@@ -1,13 +1,12 @@
 <?php
-
-declare(strict_types=1);
-
 /**
- * Sistema de Votación Electrónica
+ * Electronic Electoral System
  *
- * @package  sve
+ * @package  ees
  * @author   Sanders Gutiérrez <ing.sanders@gmail.com>
  */
+
+declare(strict_types=1);
 
 if (PHP_SAPI !== 'cli-server') {
     $url = parse_url($_SERVER['REQUEST_URI']);
@@ -27,13 +26,13 @@ if (!defined('DS')) {
 /**
  * Root directory of application
  */
-if (!defined('APP_ROOT')) {
-    define('APP_ROOT', dirname($_SERVER['DOCUMENT_ROOT'], 1));
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
 }
 
 /**
  * Bootstrap Application
  */
-$app = require APP_ROOT . '/bootstrap/app.php';
+$app = require ROOT_PATH . '/apps/bootstrap.php';
 
 $app->run();
