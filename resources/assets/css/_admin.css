@@ -21,6 +21,7 @@ body > .admin-home {
         max-width: 25vw;
         grid-column: 1/2;
         grid-row: 2/4;
+        overflow-y: scroll;
 
         h3 {
             background-color: #688e4d;
