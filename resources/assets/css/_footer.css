@@ -1,7 +1,7 @@
 footer {
-    background-color: var(--black-color);
-    color: var(--white-color);
-    padding: .5em clamp(1em, 1.25em, 1.5em);
+    background-color: #e4e4e4;
+    color: var(--main-color);
+    padding: .8em clamp(1em, 1.25em, 1.5em);
 
     /* Display */
     display: flex;
@@ -10,5 +10,5 @@ footer {
 }
 
 footer a {
-    color: var(--secondary-color);
+    font-weight: 700;
 }

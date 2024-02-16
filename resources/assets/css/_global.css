@@ -10,7 +10,8 @@ html {
 
 body {
     color: var(--main-color);
-    font: var(--default-font);
+    /* font: var(--default-font); */
+    font-family: 'Open Sans', sans-serif;
     min-height: 100vh;
 }
 
