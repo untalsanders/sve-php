@@ -8,7 +8,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use SVE\Core\Classes\AbstractController;
 
-class HomeController extends AbstractController
+class StudentController extends AbstractController
 {
     /**
      * @throws NotFoundExceptionInterface
@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         $stmt->bindValue(1, 'S');
         $stmt->execute();
 
-        return $this->view($response, 'home/home.twig', [
+        return $this->view($response, 'student/home.twig', [
             'pageTitle' => 'Inicio',
             'institute' => $stmt->fetch(),
             'appName' => $this->getAppName(),
@@ -50,7 +50,7 @@ class HomeController extends AbstractController
         $queryCandidatos = 'SELECT t2.nombres, t2.apellidos FROM candidatos AS t1 LEFT JOIN estudiantes as t2 ON t1.representante = t2.id';
         $candidatos = $this->db()->query($queryCandidatos);
 
-        return $this->view($response, 'home/card.twig', [
+        return $this->view($response, 'student/card.twig', [
             'ageTitle'   => 'Tarjetón',
             'estudiante'  => $estudiante,
             'institucion' => $institucion,

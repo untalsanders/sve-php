@@ -1,0 +1,13 @@
+{% extends "templates/app.twig" %}
+
+{% block title %}
+    {{ pageTitle | capitalize }}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Home Students</h1>
+    </main>
+
+    {% include "partials/footer.twig" %}
+{% endblock %}

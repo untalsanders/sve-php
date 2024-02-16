@@ -1,0 +1,15 @@
+{% extends "templates/app.twig" %}
+
+{% block content %}
+    <main>
+        <section class="form-login">
+            <h1>Bienvenido(a)</h1>
+            <form id="login" action="/" method="post">
+                <input type="text" name="username" placeholder="Usuario" title="Escriba el nombre de usuario" autofocus>
+                <input type="password" name="password" placeholder="Contraseña" title="Escriba la contraseña de acceso">
+                <input type="submit" title="Iniciar sesión" value="Iniciar Sesión">
+            </form>
+            {% include "includes/section-rules.twig" %}
+        </section>
+    </main>
+{% endblock %}
