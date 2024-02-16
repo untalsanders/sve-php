@@ -8,56 +8,11 @@
     <div class="admin-home">
         {% include "partials/header.twig" %}
 
-        <aside>
-            <ul>
-                <li>
-                    <i class="fa-solid fa-house"></i>
-                    <a href="/">Inicio</a>
-                </li>
-                <li>
-                    <i class="fa-solid fa-boxes-packing"></i>
-                    <a href="#" title="Consultar resultados de votación">Resultados de Votación</a>
-                </li>
-                <li>
-                    <i class="fa-solid fa-user-graduate"></i>
-                    <a href="#" title="Consulta de estudiantes por grado">Estudiantes</a>
-                </li>
-                {% if user.role_name == 'admin' %}
-                    <li>
-                        <i class="fa-solid fa-medal"></i>
-                        <a href="#" title="Candidatos">Lista de Candidatos</a>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-file-import"></i>
-                        <a href="#" title="Importar datos">Importar datos estudiantes</a>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-user-gear"></i>
-                        <a href="#" title="Administradores del sistema">Administradores del Sistema</a>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-gear"></i>
-                        <a href="#" title="Configuración general">Configuración General</a>
-                    </li>
-                {% endif %}
-                <li>
-                    <i class="fa-solid fa-recycle"></i>
-                    <a href="#" title="Bitácora del sistema">Bitácora del Sistema</a>
-                </li>
-                <li>
-                    <i class="fa-solid fa-user"></i>
-                    <a href="#" title="Cambiar contraseña de acceso">Perfil</a>
-                </li>
-                <li>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <a href="/logout" title="Salir del sistema">Cerrar sesión</a>
-                </li>
-            </ul>
-        </aside>
+        {% include "partials/sidebar.twig" %}
 
         <main>
             <h1>Contenido Principal</h1>
-            
+
             {% include "includes/lorem.twig" %}
         </main>
 
