@@ -1,21 +1,28 @@
 -- grades
-INSERT INTO grades
-VALUES
-    (1, 'PRIMERO'),
-    (2, 'SEGUNDO'),
-    (3, 'TERCERO'),
-    (4, 'CUARTO'),
-    (5, 'QUINTO'),
-    (6, 'SEXTO'),
-    (7, 'SEPTIMO'),
-    (8, 'OCTAVO'),
-    (9, 'NOVENO'),
-    (10, 'DECIMO'),
-    (11, 'UNDECIMO');
+INSERT INTO grades (name) VALUES
+    ('PRIMERO'),
+    ('SEGUNDO'),
+    ('TERCERO'),
+    ('CUARTO'),
+    ('QUINTO'),
+    ('SEXTO'),
+    ('SÉPTIMO'),
+    ('OCTAVO'),
+    ('NOVENO'),
+    ('DÉCIMO'),
+    ('UNDÉCIMO');
 
 -- roles
-INSERT INTO roles VALUES (1, 'admin', 'System administrator'), (2, 'student', 'Student of school');
+INSERT INTO roles (role_name, role_description) VALUES ('ADMIN', 'System administrator'), ('STUDENT', 'Student of school');
+-- document_types
+INSERT INTO document_types (type_name) VALUES ('TARJETA DE IDENTIDAD'), ('CÉDULA');
+-- documents
+INSERT INTO documents (document_number, type_document_id) VALUES ('96009842', 1);
 -- people
-INSERT INTO people VALUES (1, 'Sanders', 'Gutiérrez', '96009842', '1988-11-21 22:30:43');
+INSERT INTO people (firstname, lastname, document_id, birthdate) VALUES ('Sanders', 'Gutiérrez', 1, '1988-11-21');
 -- users
-INSERT INTO users VALUES (1, 'sanders', md5('S3cret'), 1, NOW(), NOW());
+INSERT INTO users (username, email, password, role_id, people_id) VALUES ('untalsanders', 'ing.sanders@gmail.com', md5('S3cret'), 1, 1);
+
+-- schools
+INSERT INTO schools (name, is_active, code) VALUES ('Instituto Educativo Técnico Comercial', 1, 'fab456');
+

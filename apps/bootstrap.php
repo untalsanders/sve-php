@@ -34,5 +34,3 @@ $app->add(TwigMiddleware::createFromContainer($app));
 require ROOT_PATH . '/routes/web.php';
 
 return $app;
-
-

@@ -1,3 +1,4 @@
+-- Active: 1749216669012@@127.0.0.1@3306@sve
 -- MySQL dump 10.13  Distrib 8.0.29, for macos12 (x86_64)
 --
 -- Host: 127.0.0.1    Database: ses

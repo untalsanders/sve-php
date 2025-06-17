@@ -14,7 +14,7 @@ class StudentController extends AbstractController
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
-    public function init(Request $request, Response $response, array $args)
+    public function index(Request $request, Response $response, array $args)
     {
         $sql = 'SELECT * FROM general WHERE activo = ?';
         $stmt = $this->db()->prepare($sql);

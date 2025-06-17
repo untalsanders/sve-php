@@ -10,16 +10,15 @@
             "email": "ing.sanders@gmail.com"
         }
     ],
-    "minimum-stability": "RC",
+    "minimum-stability": "stable",
     "require": {
         "php": "8.*",
         "ext-curl": "*",
-        "ext-http": "*",
         "ext-json": "*",
         "ext-mysqli": "*",
         "ext-pdo": "*",
         "doctrine/dbal": "2.13.9",
-        "laminas/laminas-diactoros": "2.24.0",
+        "laminas/laminas-diactoros": "^3.6",
         "monolog/monolog": "^3.2",
         "php-di/php-di": "6.4.0",
         "slim/psr7": "1.5.0",
@@ -28,7 +27,6 @@
         "vlucas/phpdotenv": "4.2.2"
     },
     "require-dev": {
-        "ext-xdebug": "*",
         "phpunit/phpunit": "9.5.21"
     },
     "config": {
@@ -54,6 +52,6 @@
         ],
         "dev": "php -S localhost:8000 -t public -c etc/infrastructure/php/php.ini",
         "debug": "php -S localhost:8000 -t public -c etc/infrastructure/php/php.ini -c etc/infrastructure/php/conf.d/xdebug.ini",
-        "test": "phpunit --colors=always --testdox tests/"
+        "test": "phpunit --colors=always --testdox tests/ -c etc/infrastructure/php/php.ini"
     }
 }

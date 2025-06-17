@@ -17,7 +17,7 @@ $app->post('/', SessionController::class . ':login')->setName('login');
 $app->redirect('/logout', '/', 301);
 
 // HomeController
-$app->get('/student', StudentController::class . ':home')->setName('student-home');
+$app->get('/student', StudentController::class . ':index')->setName('student-index');
 $app->post('/student/card', StudentController::class . ':card')->setName('student-card');
 
 // AdminController

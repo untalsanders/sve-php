@@ -18,6 +18,6 @@
     --default-font-variant-css21: normal;
     --default-font-weight: 400;
     --default-font-size: calc(15px + 0.390625vw);
-    --default-font-family: 'Open Sans', sans-serif;
+    --default-font-family: 'Poppins', sans-serif;
     --default-font: var(--default-font-style) var(--default-font-variant-css21) var(--default-font-weight) var(--default-font-size) var(--default-font-family);
 }
