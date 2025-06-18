@@ -1,0 +1,82 @@
+.page-login {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min(20rem, 100%), 1fr));
+    min-height: 100dvh;
+
+    > * {
+        padding: 3vw;
+
+        &~& {
+            border-left: .0625rem solid #d4d4d4;
+        }
+    }
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+
+    h2 {
+        text-align: center;
+        width: 100%;
+
+        > *:not(:first-child) {
+            color: #888;
+            display: block;
+            font-size: 1rem;
+            font-weight: 300;
+            font-stretch: expanded;
+        }
+    }
+
+    input {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--senary-color);
+        width: 100%;
+
+        &:focus {
+            border: 1px solid var(--senary-color);
+        }
+    }
+
+    input[type='submit'] {
+        border: 1px solid var(--secondary-color);
+        background-color: var(--secondary-color);
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+}
+
+
+.rules {
+    background: var(--secondary-color);
+    background-size: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    ul {
+        > *:not(:last-child) {
+            padding-bottom: 1rem;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0 20px;
+            font-size: 1.2rem;
+        }
+    }
+}

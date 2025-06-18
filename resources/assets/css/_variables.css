@@ -11,13 +11,13 @@
     --nonary-color: #39cccc;
     --white-color: #fff;
     --black-color: #000;
-    --main-color: #333333;
+    --main-color: #222;
 
     /* Font Styles */
     --default-font-style: normal;
     --default-font-variant-css21: normal;
     --default-font-weight: 400;
-    --default-font-size: calc(15px + 0.390625vw);
-    --default-font-family: 'Poppins', sans-serif;
+    --default-font-size: calc(10px + 0.390625vw);
+    --default-font-family: 'Poppins', system-ui, sans-serif;
     --default-font: var(--default-font-style) var(--default-font-variant-css21) var(--default-font-weight) var(--default-font-size) var(--default-font-family);
 }
