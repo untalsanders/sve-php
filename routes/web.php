@@ -8,6 +8,8 @@ use SVE\Controllers\StudentController;
 use SVE\Controllers\AdminController;
 use SVE\Controllers\IndexController;
 use SVE\Controllers\SessionController;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 // Index
 $app->get('/', IndexController::class . ':index')->setName('index');
@@ -22,3 +24,5 @@ $app->post('/student/card', StudentController::class . ':card')->setName('studen
 
 // AdminController
 $app->get('/admin', AdminController::class . ':home')->setName('admin-home');
+
+$app->get('/foo', AdminController::class . ':foo')->setName('foo')->add($jsonMiddleware);

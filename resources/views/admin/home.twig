@@ -5,18 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main-admin">
-        {% include "partials/header.twig" %}
-
-        {% include "partials/sidebar.twig" %}
-
-        <main class="main-admin-content">
-            <h1>Contenido Principal</h1>
-
-            {% include "includes/lorem.twig" %}
-        </main>
-
-        {% include "partials/footer.twig" %}
-    </div>
+<div class="admin">
+    {% include "partials/header.twig" %}
+    {% include "partials/sidebar.twig" %}
+    <main class="admin__content">
+        <h1>Contenido Principal</h1>
+        {% include "includes/lorem.twig" %}
+    </main>
+    {% include "partials/footer.twig" %}
+</div>
 {% endblock %}
 

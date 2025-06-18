@@ -1,8 +1,8 @@
-.main-admin {
+.admin {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
-    max-height: 100vh;
-    min-height: 100vh;
+    max-height: 100dvh;
+    min-height: 100dvh;
     overflow-y: hidden;
 }
 
@@ -59,7 +59,7 @@
     }
 }
 
-.main-admin-content {
+.admin__content {
     padding: 1rem clamp(1.5rem, 2rem, 5vw);
     overflow-y: auto;
 }
@@ -68,7 +68,7 @@
     border-top: .0625rem solid #aaa;
 }
 
-.main-admin {
+.admin {
     background-color: inherit;
     max-height: 100vh;
     display: grid;
