@@ -34,8 +34,10 @@ vendor/
 node_modules/
 
 ### Public Assets ###
-public/**/*.js
-public/**/*.css
+public/assets
+
+### Webpack Build ###
+dist
 
 ### Logs ###
 logs/

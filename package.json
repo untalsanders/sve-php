@@ -31,6 +31,7 @@
         "@babel/preset-env": "7.20.2",
         "@faker-js/faker": "7.6.0",
         "babel-loader": "9.1.2",
+        "copy-webpack-plugin": "13.0.0",
         "css-loader": "6.7.3",
         "prettier": "2.8.3",
         "style-loader": "3.3.1",

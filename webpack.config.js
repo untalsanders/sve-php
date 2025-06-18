@@ -1,18 +1,21 @@
 'use strict'
 
-const { resolve } = require('path')
+const { join } = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
+
+const ROOT_PATH = __dirname
 
 module.exports = {
-    entry: './resources/assets/js/app.js',
+    entry: join(ROOT_PATH, 'resources/assets/js/app.js'),
     output: {
-        path: resolve(__dirname, 'public/assets/js'),
-        filename: 'bundle.js',
+        path: join(ROOT_PATH, 'public/assets/js'),
+        filename: 'main.js',
         clean: true,
     },
     resolve: {
         alias: {
-            '@': resolve(__dirname, './resources/assets/'),
-        }
+            '@': join(ROOT_PATH, 'resources/assets'),
+        },
     },
     module: {
         rules: [
@@ -32,4 +35,25 @@ module.exports = {
             },
         ],
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                // ICONS
+                {
+                    from: join(ROOT_PATH, 'resources/assets/icons'),
+                    to: join(ROOT_PATH, 'public/assets/icons')
+                },
+                // IMAGES
+                {
+                    from: join(ROOT_PATH, 'resources/assets/images'),
+                    to: join(ROOT_PATH, 'public/assets/images')
+                },
+                // {
+                //     from: join(ROOT_PATH, 'resources/assets/css'),
+                //     to: join(ROOT_PATH, 'public/assets/css'),
+                //     noErrorOnMissing: true,
+                // },
+            ],
+        }),
+    ],
 }
