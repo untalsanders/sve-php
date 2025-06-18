@@ -34,7 +34,7 @@ vendor/
 node_modules/
 
 ### Public Assets ###
-public/assets
+public/assets/
 
 ### Webpack Build ###
 dist
